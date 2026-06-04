@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm view *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node scripts/list-r2.mjs saemi-web \"\")",
+      "Bash(awk -F'\\\\t' '{print $2}')",
+      "Bash(awk -F'/' 'NF>=3 {print $1\"/\"$2\"/\"$3}')",
+      "Bash(node scripts/list-r2.mjs saemi-web \"products/po-film/standard/\")",
+      "Bash(awk -F'/' '{print $4}')",
+      "Bash(node scripts/list-r2.mjs saemi-web \"products/po-film/premium/\")",
+      "Bash(curl -sI \"https://pub-b3b269f399c7487d9fbb63d3270ebcad.r2.dev/design-assets/web/web-hero-image.webp\")",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(node scripts/list-r2.mjs saemi-web \"products/po-film/premium/sawasawa/\")",
+      "Bash(node scripts/list-r2.mjs saemi-web \"company/research/hero/\")",
+      "Bash(node scripts/list-r2.mjs saemi-web \"products/greenhouse-materials/fuafua/\")",
+      "Bash(grep -v '/$')",
+      "Bash(node scripts/list-r2.mjs saemi-web \"products/fertilizer-pesticide/\")",
+      "Bash(node scripts/list-r2.mjs saemi-web \"products/machinery/\")",
+      "Bash(grep -v -E '^\\(http|/|\\\\$\\)')",
+      "Bash(awk -F'/' '{print $5}')",
+      "Bash(awk -F'/' 'NF>=6 {print $6}')",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "mcp__Claude_in_Chrome__find",
+      "Bash(node scripts/download-r2.mjs saemi-original \"company/catalog/diastar-2025.pdf\" \"tmp/catalogs/diastar-2025.pdf\")",
+      "Bash(node scripts/download-r2.mjs saemi-original \"company/catalog/sansaxia.pdf\" \"tmp/catalogs/sansaxia.pdf\")",
+      "Bash(node scripts/download-r2.mjs saemi-original \"company/catalog/sunpower.pdf\" \"tmp/catalogs/sunpower.pdf\")",
+      "Bash(node scripts/download-r2.mjs saemi-original \"company/catalog/oya-sawasawa.pdf\" \"tmp/catalogs/oya-sawasawa.pdf\")",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 py -3 scripts/extract-pdf.py tmp/catalogs/diastar-2025.pdf)",
+      "Bash(py -3 -c \"from pypdf import PdfReader; print\\('pages:', len\\(PdfReader\\('tmp/catalogs/diastar-2025.pdf'\\).pages\\)\\)\")",
+      "Bash(py -3 -m pip install pdf2image pillow)",
+      "Bash(py -3 -c \"from pdf2image import convert_from_path\")",
+      "Bash(py -3 -c ' *)",
+      "Bash(py -3 -m pip install pymupdf)",
+      "Bash(py -3 -c \"import fitz; print\\(fitz.__version__\\)\")",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

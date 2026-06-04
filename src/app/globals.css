@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+/*
+ * SAEMI clear web system.
+ * Goal: Apple-like white surfaces, simple Korean titles, direct buttons,
+ * and accessible typography for older customers.
+ * Size scale: 8px base grid, with 4px subgrid for compact text and controls.
+ */
+@theme {
+  --color-earth-beige: #f5f0e6;
+  --color-paper: #ffffff;
+  --color-paper-soft: #f5f5f7;
+  --color-paper-warm: #fbfaf7;
+  --color-soil-brown: #2e2620;
+  --color-soil-brown-soft: #4c4742;
+  --color-soil-brown-mute: #7b746d;
+  --color-spring-blue: #1b9ccf;
+  --color-line: #e5e5ea;
+  --color-ink-invert: #1d1d1f;
+
+  --color-standard-green: #abdc67;
+  --color-warm-beige: #ceaa7f;
+  --color-accent-tangerine: #db773a;
+  --color-tech-navy: #003c80;
+  --color-deep-green: #4f6b3a;
+  --color-soil-green: #46521d;
+  --color-deep-green-black: #2f3228;
+  --color-premium-brown: #9b624a;
+  --color-premium-cream: #ece4d0;
+  --color-premium-line: rgba(236, 228, 208, 0.2);
+
+  --font-serif: var(--font-gowun-batang), "Gowun Batang", "Noto Serif KR",
+    serif;
+  --font-sans: var(--font-pretendard), "Pretendard Variable", Pretendard,
+    system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: Consolas, "SFMono-Regular", "Liberation Mono", Menlo, monospace;
+
+  --leading-display: 1.05;
+  --leading-h1: 1.15;
+  --leading-h2: 1.25;
+  --leading-h3: 1.3;
+  --leading-body: 1.75;
+  /* 한글 대형 헤드라인은 살짝 타이트하게(애플식 옵티컬 트래킹), 본문은 중립 */
+  --tracking-display: -0.022em;
+  --tracking-h1: -0.018em;
+  --tracking-h2: -0.014em;
+  --tracking-h3: -0.008em;
+  --tracking-body: 0;
+
+  /* 깊이 체계 — 1px 보더만으로는 평면적이라 미세 그림자 레이어 추가 */
+  --shadow-subtle: 0 1px 2px rgba(29, 29, 31, 0.04),
+    0 6px 16px rgba(29, 29, 31, 0.06);
+  --shadow-card: 0 2px 8px rgba(29, 29, 31, 0.06),
+    0 18px 40px rgba(29, 29, 31, 0.1);
+  --shadow-pop: 0 24px 64px rgba(29, 29, 31, 0.14);
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink-invert);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  /* 상단 sticky 헤더(56px) + 제품 sticky 서브내비(56px) 높이만큼 앵커 보정 */
+  scroll-padding-top: 124px;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-paper);
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  line-height: var(--leading-body);
+  word-break: keep-all;
+}
+
+::selection {
+  background: rgba(27, 156, 207, 0.18);
+  color: var(--color-ink-invert);
+}
+
+:where(h1, h2, h3, h4) {
+  line-height: 1.12;
+}
+:where(h1) {
+  letter-spacing: var(--tracking-h1);
+}
+:where(h2) {
+  letter-spacing: var(--tracking-h2);
+}
+:where(h3) {
+  letter-spacing: var(--tracking-h3);
+}
+/* 초대형 히어로 타이틀(>=4.5rem)은 더 타이트하게 */
+:where(h1).text-balance,
+.tracking-display {
+  letter-spacing: var(--tracking-display);
+}
+
+.font-slogan,
+.font-philosophy,
+.font-premium,
+.font-farm-quote,
+.premium-surface :is(h1, h2, h3, .display, .lede),
+[data-mode="premium"] :is(h1, h2, h3, .display, .lede) {
+  font-family: var(--font-serif);
+}
+
+.font-tech {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.premium-surface {
+  background: var(--color-soil-green);
+  color: var(--color-premium-cream);
+}
+.premium-surface ::selection {
+  background: var(--color-premium-brown);
+  color: var(--color-premium-cream);
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+.link-underline::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 200ms ease-out;
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.apple-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.apple-button:hover {
+  transform: translateY(-1px);
+}
+.apple-button:active {
+  transform: translateY(0) scale(0.98);
+}
+.apple-button-primary {
+  background: var(--color-spring-blue);
+  color: white;
+}
+.apple-button-primary:hover {
+  background: #178cbb;
+  box-shadow: 0 10px 24px rgba(27, 156, 207, 0.28);
+}
+.apple-button-secondary {
+  border: 1px solid rgba(27, 156, 207, 0.38);
+  color: var(--color-spring-blue);
+}
+.apple-button-secondary:hover {
+  border-color: var(--color-spring-blue);
+  background: rgba(27, 156, 207, 0.06);
+}
+
+/* 키보드 포커스 전용 링 — 마우스 호버와 분리 */
+:where(a, button, [role="button"], input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-spring-blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.apple-button:focus-visible,
+.saemi-pill:focus-visible {
+  outline-offset: 4px;
+}
+
+.saemi-pill {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+.saemi-pill:hover,
+.saemi-pill:focus-visible {
+  transform: translateY(-1px);
+}
+.saemi-pill-primary {
+  background: var(--color-spring-blue);
+  color: white;
+}
+.saemi-pill-secondary {
+  border: 1px solid rgba(27, 156, 207, 0.38);
+  color: var(--color-spring-blue);
+}
+
+.surface-panel {
+  background: white;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-subtle);
+  transition: box-shadow 280ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .surface-panel,
+a.surface-panel:hover,
+.surface-panel:hover {
+  box-shadow: var(--shadow-card);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-rise {
+  animation: fade-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes apple-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.apple-reveal {
+  animation: apple-reveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@supports (animation-timeline: view()) {
+  .apple-reveal {
+    animation-timeline: view();
+    /* 뷰포트에 닿는 즉시 시작해 완전히 드러나도록 — 빈 화면 방지 */
+    animation-range: entry 0% cover 22%;
+  }
+}
+
+@keyframes soft-scale {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.media-settle {
+  animation: soft-scale 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+  /* 스크롤 구동 리빌이 콘텐츠를 숨긴 채로 남지 않도록 즉시 표시 */
+  .apple-reveal,
+  .fade-rise,
+  .media-settle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
