@@ -80,6 +80,7 @@ export default function MonthlyProductSlider({
 }) {
   const [index, setIndex] = useState(0);
   const count = SLIDES.length;
+  const isLast = index === count - 1;
   const next = () => setIndex((i) => (i + 1) % count);
 
   return (
@@ -178,7 +179,7 @@ export default function MonthlyProductSlider({
       <button
         type="button"
         onClick={next}
-        aria-label="다음 이달의 제품 보기"
+        aria-label={isLast ? "처음 제품으로 돌아가기" : "다음 이달의 제품 보기"}
         className="absolute right-5 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-white/70 text-ink-invert shadow-[var(--shadow-card)] backdrop-blur-md transition-colors hover:bg-white lg:right-8"
       >
         <svg
@@ -192,7 +193,14 @@ export default function MonthlyProductSlider({
           strokeLinejoin="round"
           aria-hidden
         >
-          <path d="M9 6l6 6-6 6" />
+          {isLast ? (
+            <>
+              <path d="M6 6v12" />
+              <path d="M16 6l-6 6 6 6" />
+            </>
+          ) : (
+            <path d="M9 6l6 6-6 6" />
+          )}
         </svg>
       </button>
 

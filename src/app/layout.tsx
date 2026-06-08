@@ -10,7 +10,7 @@ const LOGO_URL = `${SITE_URL}/saemi-logo.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "새미그룹 | 농업용 필름과 농자재",
+    default: "새미그룹 | 프리미엄 종합농자재",
     template: "%s | 새미그룹",
   },
   description:
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "새미그룹",
-    title: "새미그룹 | 농업용 필름과 농자재",
+    title: "새미그룹 | 프리미엄 종합농자재",
     description:
       "PO필름, 하우스 부자재, 농약·비료, 기계 부품을 공급하는 농업 자재 회사입니다.",
     url: SITE_URL,

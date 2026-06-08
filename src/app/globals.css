@@ -285,6 +285,23 @@ a.surface-panel:hover,
   animation: soft-scale 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* 우수농가 무한 자동 슬라이드(좌측 방향): 트랙 1벌 복제, 50% 이동 시 이음새 없이 순환 */
+@keyframes farm-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.farm-marquee-track {
+  animation: farm-marquee 180s linear infinite;
+  will-change: transform;
+}
+.farm-marquee:hover .farm-marquee-track {
+  animation-play-state: paused;
+}
+
 @layer utilities {
   .no-scrollbar {
     scrollbar-width: none;
