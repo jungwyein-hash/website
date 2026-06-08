@@ -84,7 +84,7 @@ export default function MonthlyProductSlider({
   const next = () => setIndex((i) => (i + 1) % count);
 
   return (
-    <section className="relative overflow-hidden border-y border-line bg-paper-warm">
+    <section className="relative overflow-hidden bg-paper-warm">
       <div
         className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
         style={{ transform: `translateX(-${index * 100}%)` }}
@@ -95,7 +95,7 @@ export default function MonthlyProductSlider({
             <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
               <HeroImage url={heroUrls[i]} alt={s.heroAlt} sizes="50vw" />
             </div>
-            <div className="relative mx-auto max-w-[1600px] px-6 py-20 lg:px-10 lg:py-28">
+            <div className="relative mx-auto max-w-[1600px] px-6 py-24 md:py-32 lg:px-10 lg:py-36">
               <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <div className="flex items-center gap-3">

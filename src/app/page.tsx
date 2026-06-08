@@ -62,7 +62,7 @@ const divisions = [
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col gap-3 bg-paper-soft">
       <section className="relative isolate flex min-h-[600px] items-center overflow-hidden bg-black md:min-h-[680px] lg:min-h-[760px]">
         {/* 배경 영상: 밤 → 낮 */}
         <video
@@ -135,8 +135,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-paper-soft">
-        <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-10 lg:py-28">
+      <section className="bg-paper">
+        <div className="mx-auto max-w-[1600px] px-6 py-24 md:py-32 lg:px-10 lg:py-36">
           <div className="mx-auto max-w-[760px] text-center apple-reveal">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               BUSINESS AREAS
@@ -153,7 +153,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-16 grid grid-cols-1 gap-4 md:mt-20 md:grid-cols-2 xl:grid-cols-4">
             {divisions.map((division) => (
               <Link
                 key={division.href}
@@ -194,7 +194,7 @@ export default function Home() {
       />
 
       <section className="overflow-hidden bg-white">
-        <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-10 px-6 pt-20 lg:grid-cols-12 lg:px-10 lg:pt-28">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-10 px-6 pt-24 md:pt-32 lg:grid-cols-12 lg:px-10 lg:pt-36">
           <div className="lg:col-span-8">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               CONTACT
@@ -213,7 +213,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-14 pb-20 lg:pb-28">
+        <div className="mt-16 pb-24 md:mt-20 md:pb-32 lg:pb-36">
           <BestFarmsMarquee farms={farmMarqueeCards} />
           <p className="font-farm-quote mx-auto mt-14 max-w-[52ch] px-6 text-center text-[20px] md:text-[26px] leading-relaxed text-soil-brown">
             전국 곳곳에서 다양한 작물을 재배하는 농가들이
@@ -222,6 +222,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
