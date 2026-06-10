@@ -29,6 +29,13 @@ const CROP_BOX: Record<string, [number, number, number, number]> = {
   거베라: [819, 1090, 990, 1218], // 거베라 전용 일러스트 부재 → 장미로 대체
 };
 
+// 일러스트가 누워 있는 작물 보정 — CSS 회전(도, 음수 = 시계반대방향)
+const CROP_ROTATE: Record<string, number> = {
+  오이: -70,
+  라임: -70,
+  고추: -60,
+};
+
 export default function CropIcon({
   crop,
   className,
@@ -44,6 +51,7 @@ export default function CropIcon({
   const w = x1 - x0;
   const h = y1 - y0;
   const scale = size / Math.max(w, h);
+  const rotate = CROP_ROTATE[crop];
   return (
     <span
       aria-hidden
@@ -57,6 +65,7 @@ export default function CropIcon({
         backgroundSize: `${SPRITE_SIZE * scale}px ${SPRITE_SIZE * scale}px`,
         backgroundPosition: `${-x0 * scale}px ${-y0 * scale}px`,
         backgroundRepeat: "no-repeat",
+        ...(rotate ? { transform: `rotate(${rotate}deg)` } : undefined),
       }}
     />
   );
