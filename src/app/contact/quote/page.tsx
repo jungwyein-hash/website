@@ -13,7 +13,7 @@ export default function QuotePage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Quote
         </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal">
+        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1]">
           견적 요청
         </h1>
         <p className="mt-8 max-w-[40ch] text-[16px] leading-[1.85] text-soil-brown-soft">

@@ -13,7 +13,7 @@ export default function SaemiNongbaksaPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Saemi Nongbaksa · AI Service
         </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal max-w-[14ch]">
+        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[14ch]">
           새미농박사 앱
         </h1>
         <p className="mt-8 max-w-[44ch] text-[16px] leading-[1.85] text-soil-brown">

@@ -13,7 +13,7 @@ export default function BecomeDealerPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Become a Dealer
         </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal max-w-[14ch]">
+        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[14ch]">
           대리점 개설 문의
         </h1>
       </div>
@@ -31,7 +31,7 @@ export default function BecomeDealerPage() {
             { title: "지속적 신제품 공급", body: "썬파워 · 코팅 쿨 · 올시즌 · 따시네 · 그린포스 등 신제품을 가장 먼저 만나봅니다." },
           ].map((b) => (
             <li key={b.title} className="border-b border-line py-6">
-              <h3 className="text-[20px] tracking-normal mb-2">{b.title}</h3>
+              <h3 className="text-[20px] mb-2">{b.title}</h3>
               <p className="text-[16px] leading-[1.8] text-soil-brown-soft max-w-[60ch]">
                 {b.body}
               </p>

@@ -30,7 +30,7 @@ export default function MachineryHub() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Machinery &amp; FA
         </p>
-        <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] tracking-normal max-w-[16ch]">
+        <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] max-w-[16ch]">
           기계·FA 제품을 찾으세요.
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -50,7 +50,7 @@ export default function MachineryHub() {
             <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
               {s.eyebrow}
             </p>
-            <h2 className="text-[28px] tracking-normal mb-4">{s.title}</h2>
+            <h2 className="text-[28px] mb-4">{s.title}</h2>
             <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch]">
               {s.body}
             </p>
@@ -66,7 +66,7 @@ export default function MachineryHub() {
           <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
             Sumitomo · Maruyama · Yahata · Yaskawa
           </p>
-          <h2 className="text-[28px] md:text-[36px] lg:text-[44px] tracking-normal leading-[1.2]">
+          <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2]">
             글로벌 제조 협력사.
           </h2>
           <p className="mt-6 max-w-[40ch] text-[16px] leading-[1.85] text-soil-brown-soft">

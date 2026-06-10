@@ -20,7 +20,7 @@ export default function ContactHub() {
       <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
         Contact
       </p>
-      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
         문의하기
       </h1>
       <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -31,7 +31,7 @@ export default function ContactHub() {
       <ul className="mt-20 grid md:grid-cols-2 gap-px bg-line border border-line">
         {CARDS.map((c) => (
           <li key={c.href} className="bg-earth-beige p-10 lg:p-14">
-            <h2 className="text-[24px] tracking-normal mb-3">{c.title}</h2>
+            <h2 className="text-[24px] mb-3">{c.title}</h2>
             <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch] mb-6">
               {c.body}
             </p>

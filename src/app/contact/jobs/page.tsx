@@ -12,7 +12,7 @@ export default function JobsPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Careers
         </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal max-w-[14ch]">
+        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[14ch]">
           채용 안내
         </h1>
       </div>

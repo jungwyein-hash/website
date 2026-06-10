@@ -29,9 +29,11 @@ export async function generateMetadata({
   return {
     title: product.name.ko,
     description: product.tagline.ko,
+    alternates: { canonical: `/po-film/${tier}/${slug}` },
     openGraph: {
       title: `${product.name.ko} | 새미그룹 PO필름`,
       description: product.tagline.ko,
+      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     },
   };
 }

@@ -9,8 +9,8 @@ import { r2Url } from "@/lib/r2-image";
 import type { MediaRef, Product } from "@/lib/types";
 
 const SUB_NAV = [
-  { id: "intro", label: "소개" },
-  { id: "points", label: "특징" },
+  { id: "overview", label: "소개" },
+  { id: "highlights", label: "특징" },
   { id: "specs", label: "사양" },
   { id: "farms", label: "사용 농가" },
 ];
@@ -101,7 +101,7 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       )}
 
       <section
-        id="intro"
+        id="overview"
         className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28"
       >
         <div className="lg:col-span-3">
@@ -163,7 +163,7 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       )}
 
       <section
-        id="points"
+        id="highlights"
         className="border-y border-line bg-paper-warm px-6 py-20 lg:px-10 lg:py-28"
       >
         <div className="mx-auto max-w-[1440px]">

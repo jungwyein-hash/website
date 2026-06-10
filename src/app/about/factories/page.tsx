@@ -29,7 +29,7 @@ export default function FactoriesPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Factories &amp; HQ
         </p>
-        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
           공장과 시설
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">

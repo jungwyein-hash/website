@@ -13,7 +13,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { slug } = await params;
   const item = NEWS.find((n) => n.slug === slug);
   if (!item) return {};
-  return { title: item.title, description: item.excerpt };
+  return {
+    title: item.title,
+    description: item.excerpt,
+    alternates: { canonical: `/news/${slug}` },
+    openGraph: {
+      title: `${item.title} | 새미그룹`,
+      description: item.excerpt,
+      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    },
+  };
 }
 
 const CATEGORY_LABEL: Record<string, string> = {
@@ -32,7 +41,7 @@ export default async function NewsItemPage({ params }: { params: Params }) {
       <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
         {CATEGORY_LABEL[item.category]} · {item.date}
       </p>
-      <h1 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.15] tracking-normal max-w-[24ch]">
+      <h1 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.15] max-w-[24ch]">
         {item.title}
       </h1>
       <div className="mt-12 max-w-[60ch] space-y-7 text-[16px] leading-[1.95] text-soil-brown">

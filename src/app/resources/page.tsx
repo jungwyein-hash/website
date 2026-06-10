@@ -29,7 +29,7 @@ export default function ResourcesPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Resources
         </p>
-        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
           카탈로그 자료
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -57,7 +57,7 @@ export default function ResourcesPage() {
                     className="grid lg:grid-cols-12 gap-6 py-6 group"
                   >
                     <div className="lg:col-span-7">
-                      <h3 className="text-[20px] tracking-normal mb-1 group-hover:text-soil-brown-soft transition-colors">
+                      <h3 className="text-[20px] mb-1 group-hover:text-soil-brown-soft transition-colors">
                         {c.title}
                       </h3>
                       <p className="text-[16px] text-soil-brown-soft max-w-[60ch]">

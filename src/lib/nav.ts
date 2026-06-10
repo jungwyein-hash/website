@@ -61,7 +61,7 @@ export const NAV: NavSection[] = [
           },
           { label: "산삭시아", href: "/po-film/premium/sansaxia" },
           {
-            label: "슈퍼파워",
+            label: "썬파워",
             href: "/po-film/premium/sunpower",
             caption: "분광",
           },

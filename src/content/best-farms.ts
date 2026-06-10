@@ -1,7 +1,8 @@
 // 새미 우수농가 40인 사례집 기반 데이터 (39명 사진 보유 / 배영선 농가는 R2 사진 없음)
 // 한줄평: 각 농가 프로필의 '새미 필름 사용 변화 / 자재 선택' Q&A에서 필름 관련 발언을 한 문장으로 압축.
 
-export type BestFarm = {
+// lib/types.ts의 BestFarm(제품별 사용 농가)과 다른, 우수농가 사례집 전용 타입
+export type BestFarmProfile = {
   name: string;
   region: string;
   crop: string;
@@ -14,7 +15,7 @@ export type BestFarm = {
   heroKey: string;
 };
 
-export const bestFarms: BestFarm[] = [
+export const bestFarms: BestFarmProfile[] = [
   { name: "남길우 농가", region: "충남 부여", crop: "수박", round: 1, product: "다이아스타", quote: "필름은 제2의 토양입니다 — 환경이 안정돼야 수박도 흐름대로 자랍니다.", heroKey: "products/po-film/premium/diastar/best-farms/nam-gilwoo-buyeo-watermelon-v1/231006/gallery/portrait-01.webp" },
   { name: "이관우 농가", region: "충남 부여", crop: "수박", round: 2, product: "이스타", quote: "필름으로 결로가 줄어 잿빛곰팡이가 거의 사라지고, 전열 비용도 약 15% 줄었습니다.", heroKey: "products/po-film/premium/estar/best-farms/이관우-buyeo-watermelon-v2/250514/gallery/portrait-01.webp" },
   { name: "박수진 농가", region: "충남 논산", crop: "딸기", round: 1, product: "오야", quote: "필름의 보온 성능으로 생육 리듬이 일정해지고, 난방비도 4분의 1 수준으로 줄었습니다.", heroKey: "products/po-film/premium/oya/best-farms/park-sujin-nonsan-strawberry-v1/portrait-01.webp" },

@@ -68,7 +68,7 @@ export default function PremiumGallery({ slides }: { slides: GallerySlide[] }) {
                   src={s.url}
                   alt={s.alt}
                   fill
-                  priority={i === 0}
+                  preload={i === 0}
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 80vw"
                   className="object-cover"
                 />

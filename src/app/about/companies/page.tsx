@@ -16,7 +16,7 @@ export default function CompaniesPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Companies
         </p>
-        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
           새미그룹 계열 회사
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -39,7 +39,7 @@ export default function CompaniesPage() {
                 <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
                   {c.founded} · 설립
                 </p>
-                <h2 className="text-[28px] md:text-[36px] lg:text-[44px] tracking-normal mb-3">
+                <h2 className="text-[28px] md:text-[36px] lg:text-[44px] mb-3">
                   {c.legalName}
                 </h2>
                 <p className="text-[12px] tracking-normal uppercase text-soil-brown-soft mb-6">

@@ -49,7 +49,7 @@ export default function PartsPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Precision Parts
         </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal max-w-[16ch]">
+        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[16ch]">
           정밀 기계 부품
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -72,7 +72,7 @@ export default function PartsPage() {
                   className="object-cover"
                 />
               </div>
-              <h3 className="mt-5 text-[20px] tracking-normal">{c.title}</h3>
+              <h3 className="mt-5 text-[20px]">{c.title}</h3>
               <p className="mt-2 text-[16px] leading-[1.7] text-soil-brown-soft max-w-[40ch]">
                 {c.body}
               </p>
@@ -84,7 +84,7 @@ export default function PartsPage() {
       <section className="border-t border-line bg-paper-soft text-ink-invert">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-7">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] tracking-normal leading-[1.2]">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2]">
               필요한 부품의 사양과 수량을 알려주세요.
             </h2>
             <p className="mt-6 max-w-[44ch] text-[16px] leading-[1.85] text-soil-brown-soft">

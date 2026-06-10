@@ -54,7 +54,7 @@ export default function ResearchPage() {
           <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
             Agricultural Research Lab
           </p>
-          <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+          <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
             농업연구소
           </h1>
         </div>
@@ -101,7 +101,7 @@ export default function ResearchPage() {
               <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
                 Pillar · {p.eyebrow}
               </p>
-              <h3 className="text-[24px] tracking-normal mb-3">
+              <h3 className="text-[24px] mb-3">
                 {p.title}
               </h3>
               <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch]">

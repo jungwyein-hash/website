@@ -23,7 +23,7 @@ export default function AboutHub() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           About
         </p>
-        <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] tracking-normal max-w-[18ch]">
+        <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] max-w-[18ch]">
           새미그룹은 4개의 회사로 운영됩니다.
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -44,7 +44,7 @@ export default function AboutHub() {
               <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
                 {c.founded} · 설립
               </p>
-              <h3 className="text-[24px] tracking-normal mb-2">
+              <h3 className="text-[24px] mb-2">
                 {c.legalName}
               </h3>
               <p className="text-[12px] text-soil-brown-soft mb-4">

@@ -38,7 +38,7 @@ export default function StickySubNav({
         </nav>
         <Link
           href="/contact/quote"
-          className="inline-flex h-9 items-center rounded-full bg-spring-blue px-4 text-[12px] font-semibold text-white transition-colors hover:bg-[#178cbb]"
+          className="inline-flex h-9 items-center rounded-full bg-spring-blue px-4 text-[12px] font-semibold text-white transition-colors hover:bg-spring-blue-deep"
         >
           견적 문의
         </Link>

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // 로컬 작업 폴더 (gitignore됨) — 브라우저 프로필 등 외부 파일 lint 제외
+    "tmp/**",
   ]),
 ]);
 

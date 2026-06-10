@@ -46,7 +46,7 @@ export default function BestFarmsMarquee({ farms }: { farms: MarqueeFarm[] }) {
       <div className="farm-marquee-track flex w-max gap-4 py-2 lg:gap-5">
         {loop.map((f, i) => (
           <article
-            key={i}
+            key={`${f.name}-${i < order.length ? "a" : "b"}`}
             aria-hidden={i >= order.length}
             className="surface-panel flex w-[240px] flex-shrink-0 flex-col overflow-hidden bg-white p-3 lg:w-[260px]"
           >

@@ -75,6 +75,7 @@ export default function QuoteForm() {
 
       <Field label="제품 분류" name="productGroup" required>
         <select
+          id="productGroup"
           name="productGroup"
           required
           className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
@@ -91,7 +92,9 @@ export default function QuoteForm() {
       <Field label="제품명·사양 (선택)" name="productDetail">
         <input
           type="text"
+          id="productDetail"
           name="productDetail"
+          maxLength={200}
           placeholder="예: 코팅플러스 0.10mm"
           className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
         />
@@ -100,7 +103,9 @@ export default function QuoteForm() {
       <Field label="수량 / 면적 (선택)" name="quantity">
         <input
           type="text"
+          id="quantity"
           name="quantity"
+          maxLength={100}
           placeholder="예: 200평 / 5롤"
           className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
         />
@@ -110,16 +115,20 @@ export default function QuoteForm() {
         <Field label="이름" name="name" required>
           <input
             type="text"
+            id="name"
             name="name"
             required
+            maxLength={100}
             className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
           />
         </Field>
         <Field label="연락처" name="phone" required>
           <input
             type="tel"
+            id="phone"
             name="phone"
             required
+            maxLength={50}
             placeholder="010-0000-0000"
             className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
           />
@@ -129,7 +138,9 @@ export default function QuoteForm() {
       <Field label="이메일 (선택)" name="email">
         <input
           type="email"
+          id="email"
           name="email"
+          maxLength={200}
           className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
         />
       </Field>
@@ -137,7 +148,9 @@ export default function QuoteForm() {
       <Field label="작목 / 지역 (선택)" name="cropRegion">
         <input
           type="text"
+          id="cropRegion"
           name="cropRegion"
+          maxLength={200}
           placeholder="예: 토마토 / 경남 진주"
           className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue"
         />
@@ -145,8 +158,10 @@ export default function QuoteForm() {
 
       <Field label="메시지" name="message">
         <textarea
+          id="message"
           name="message"
           rows={5}
+          maxLength={5000}
           placeholder="문의 내용을 자유롭게 적어주세요."
           className="w-full bg-transparent border-b border-line py-3 text-[16px] focus:outline-none focus:border-spring-blue resize-none"
         />

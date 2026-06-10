@@ -21,7 +21,7 @@ export default function CeoPage() {
       <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
         CEO Message
       </p>
-      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] tracking-normal max-w-[16ch]">
+      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] max-w-[16ch]">
         대표 인사말
       </h1>
       <div className="mt-16 grid lg:grid-cols-12 gap-12">

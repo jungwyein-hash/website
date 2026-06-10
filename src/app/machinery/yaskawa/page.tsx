@@ -23,7 +23,7 @@ export default function YaskawaPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           YASKAWA MOTOMAN · Since 2012
         </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal max-w-[20ch]">
+        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[20ch]">
           YASKAWA 로봇 자동화
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -40,7 +40,7 @@ export default function YaskawaPage() {
               <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
                 {l.code}
               </p>
-              <h3 className="text-[24px] tracking-normal mb-3">{l.title}</h3>
+              <h3 className="text-[24px] mb-3">{l.title}</h3>
               <p className="text-[16px] leading-[1.75] text-soil-brown-soft max-w-[40ch]">
                 {l.body}
               </p>
@@ -51,7 +51,7 @@ export default function YaskawaPage() {
 
       <section className="border-t border-line bg-paper-soft text-ink-invert mt-12">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20">
-          <h2 className="text-[28px] md:text-[36px] lg:text-[44px] tracking-normal leading-[1.2] max-w-[20ch]">
+          <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2] max-w-[20ch]">
             도입 검토 단계부터 함께합니다.
           </h2>
           <p className="mt-6 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">

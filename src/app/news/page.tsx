@@ -20,7 +20,7 @@ export default function NewsPage() {
       <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
         News
       </p>
-      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
         새미 소식
       </h1>
 
@@ -40,7 +40,7 @@ export default function NewsPage() {
                 </span>
               </div>
               <div className="lg:col-span-9 lg:col-start-4">
-                <h2 className="text-[20px] md:text-[24px] lg:text-[28px] tracking-normal mb-3 group-hover:text-soil-brown-soft transition-colors">
+                <h2 className="text-[20px] md:text-[24px] lg:text-[28px] mb-3 group-hover:text-soil-brown-soft transition-colors">
                   {n.title}
                 </h2>
                 <p className="text-[16px] leading-[1.8] text-soil-brown-soft max-w-[60ch]">

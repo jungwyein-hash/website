@@ -1,32 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ListObjectsV2Command } from "@aws-sdk/client-s3";
-import { r2 } from "@/lib/r2";
+import { r2, R2_BUCKET } from "@/lib/r2";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 /**
- * 개발용 — 버킷 안의 키를 prefix로 나열한다.
- *   /api/r2/list?prefix=products/po-film/premium/diastar/hero/&bucket=saemi-web
+ * 개발용 — 공개 버킷(saemi-web)의 키를 prefix로 나열한다.
+ * 보안: 프로덕션에서는 비활성. 버킷은 공개 버킷으로 고정 — 외부 입력 안 받음.
+ *   /api/r2/list?prefix=products/po-film/premium/diastar/hero/
  */
 export async function GET(req: NextRequest) {
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json({ error: "not found" }, { status: 404 });
+  }
   const prefix = req.nextUrl.searchParams.get("prefix") ?? "";
-  const bucket = req.nextUrl.searchParams.get("bucket") ?? "saemi-web";
   try {
     const out = await r2.send(
-      new ListObjectsV2Command({ Bucket: bucket, Prefix: prefix, MaxKeys: 200 })
+      new ListObjectsV2Command({ Bucket: R2_BUCKET, Prefix: prefix, MaxKeys: 200 })
     );
     return NextResponse.json({
       ok: true,
-      bucket,
       prefix,
       count: out.KeyCount ?? 0,
       keys: (out.Contents ?? []).map((o) => o.Key),
     });
   } catch (e) {
-    return NextResponse.json(
-      { ok: false, error: e instanceof Error ? e.message : String(e) },
-      { status: 500 }
-    );
+    console.error("[/api/r2/list]", e);
+    return NextResponse.json({ ok: false, error: "internal error" }, { status: 500 });
   }
 }

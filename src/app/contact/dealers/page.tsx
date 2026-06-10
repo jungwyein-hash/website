@@ -13,7 +13,7 @@ export default function DealersPage() {
       <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
         Dealers
       </p>
-      <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] tracking-normal max-w-[18ch]">
+      <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[18ch]">
         대리점 찾기
       </h1>
       <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -36,7 +36,7 @@ export default function DealersPage() {
           <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
             가까운 대리점이 궁금하다면
           </p>
-          <h2 className="text-[24px] tracking-normal mb-3">
+          <h2 className="text-[24px] mb-3">
             지역명을 알려주시면 가장 가까운 대리점을 안내드립니다.
           </h2>
           <p className="text-[16px] leading-[1.85] text-soil-brown-soft mb-6">
@@ -53,7 +53,7 @@ export default function DealersPage() {
           <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
             대리점이 되고 싶다면
           </p>
-          <h2 className="text-[24px] tracking-normal mb-3">
+          <h2 className="text-[24px] mb-3">
             새미와 함께 자라는 동반자를 모십니다.
           </h2>
           <p className="text-[16px] leading-[1.85] text-soil-brown-soft mb-6">

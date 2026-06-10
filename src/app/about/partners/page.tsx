@@ -21,7 +21,7 @@ export default function PartnersPage() {
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
           Global Partnership
         </p>
-        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-normal max-w-[16ch]">
+        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
           협력 회사
         </h1>
         <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -42,7 +42,7 @@ export default function PartnersPage() {
                 <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
                   {g.sublabel}
                 </p>
-                <h2 className="text-[24px] md:text-[32px] lg:text-[36px] tracking-normal">
+                <h2 className="text-[24px] md:text-[32px] lg:text-[36px]">
                   {g.label}
                 </h2>
               </div>

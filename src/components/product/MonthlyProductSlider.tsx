@@ -103,9 +103,9 @@ export default function MonthlyProductSlider({
                       이달의 제품
                     </p>
                     <span className="flex items-center gap-1.5">
-                      {SLIDES.map((_, di) => (
+                      {SLIDES.map((sl, di) => (
                         <button
-                          key={di}
+                          key={sl.name}
                           type="button"
                           onClick={() => setIndex(di)}
                           aria-label={`${di + 1}번째 슬라이드로 이동`}

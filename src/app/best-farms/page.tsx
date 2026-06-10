@@ -28,7 +28,7 @@ export default function BestFarmsPage() {
           <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
             Best Farms · 2024
           </p>
-          <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] tracking-normal max-w-[16ch]">
+          <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] max-w-[16ch]">
             우수농가 사례
           </h1>
         </div>

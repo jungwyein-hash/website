@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { pretendard, gowunBatang } from "@/lib/fonts";
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+import { gowunBatang } from "@/lib/fonts";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import ReducedMotionGuard from "@/components/site/ReducedMotionGuard";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://saemigroup.com";
 const LOGO_URL = `${SITE_URL}/saemi-logo.png`;
@@ -24,8 +26,9 @@ export const metadata: Metadata = {
     description:
       "PO필름, 하우스 부자재, 농약·비료, 기계 부품을 공급하는 농업 자재 회사입니다.",
     url: SITE_URL,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "새미그룹" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: ["/og-image.png"] },
   robots: { index: true, follow: true },
 };
 
@@ -67,10 +70,11 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} ${gowunBatang.variable} h-full`}
+      className={`${gowunBatang.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink-invert">
         <Header />
+        <ReducedMotionGuard />
         <main className="flex-1">{children}</main>
         <Footer />
         <script

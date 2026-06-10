@@ -19,7 +19,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (RESERVED.has(slug)) return {};
   const p = getCropCare(slug);
   if (!p) return {};
-  return { title: p.name.ko, description: p.tagline.ko };
+  return {
+    title: p.name.ko,
+    description: p.tagline.ko,
+    alternates: { canonical: `/crop-care/${slug}` },
+    openGraph: {
+      title: `${p.name.ko} | 새미그룹`,
+      description: p.tagline.ko,
+      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    },
+  };
 }
 
 const SUB_NAV = [
@@ -64,14 +73,14 @@ export default async function CropCareProductPage({ params }: { params: Params }
           <div className="lg:col-span-3">
             <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute">Highlights</p>
           </div>
-          <h2 className="lg:col-span-8 lg:col-start-5 text-[28px] md:text-[36px] lg:text-[44px] tracking-normal max-w-[20ch]">
+          <h2 className="lg:col-span-8 lg:col-start-5 text-[28px] md:text-[36px] lg:text-[44px] max-w-[20ch]">
             왜 {product.name.ko}인가.
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {product.highlights.map((h) => (
             <article key={h.title} className="border-t border-line pt-6">
-              <h3 className="text-[20px] tracking-normal mb-3">{h.title}</h3>
+              <h3 className="text-[20px] mb-3">{h.title}</h3>
               <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[40ch]">{h.body}</p>
             </article>
           ))}
@@ -82,7 +91,7 @@ export default async function CropCareProductPage({ params }: { params: Params }
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">다음 단계</p>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] tracking-normal leading-[1.2]">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2]">
               {product.name.ko}의 자료가 필요하신가요?
             </h2>
             <div className="mt-8 flex flex-wrap gap-8 text-[16px]">

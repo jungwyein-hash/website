@@ -14,6 +14,14 @@ export default function HeroVideoBg({
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
+
+    // 모션 민감 사용자는 포스터/첫 프레임으로 정지 유지
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.removeAttribute("autoplay");
+      v.pause();
+      return;
+    }
+
     v.muted = true;
     const tryPlay = () => v.play().catch(() => {});
 
@@ -55,7 +63,7 @@ export default function HeroVideoBg({
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       aria-hidden="true"
       className="absolute inset-0 h-full w-full object-cover"
     />

@@ -15,6 +15,7 @@
   --color-soil-brown-soft: #4c4742;
   --color-soil-brown-mute: #7b746d;
   --color-spring-blue: #1b9ccf;
+  --color-spring-blue-deep: #178cbb;
   --color-line: #e5e5ea;
   --color-ink-invert: #1d1d1f;
 
@@ -31,8 +32,8 @@
 
   --font-serif: var(--font-gowun-batang), "Gowun Batang", "Noto Serif KR",
     serif;
-  --font-sans: var(--font-pretendard), "Pretendard Variable", Pretendard,
-    system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-mono: Consolas, "SFMono-Regular", "Liberation Mono", Menlo, monospace;
 
   --leading-display: 1.05;
@@ -171,7 +172,7 @@ body {
   color: white;
 }
 .apple-button-primary:hover {
-  background: #178cbb;
+  background: var(--color-spring-blue-deep);
   box-shadow: 0 10px 24px rgba(27, 156, 207, 0.28);
 }
 .apple-button-secondary {
@@ -298,7 +299,8 @@ a.surface-panel:hover,
   animation: farm-marquee 180s linear infinite;
   will-change: transform;
 }
-.farm-marquee:hover .farm-marquee-track {
+.farm-marquee:hover .farm-marquee-track,
+.farm-marquee:focus-within .farm-marquee-track {
   animation-play-state: paused;
 }
 
@@ -331,5 +333,9 @@ a.surface-panel:hover,
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+  /* 무한 마퀴는 완전히 정지 — 1ms 단축으로는 -50% 지점에 멈춰버림 */
+  .farm-marquee-track {
+    animation: none !important;
   }
 }
