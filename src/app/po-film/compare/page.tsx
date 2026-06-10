@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getPoFilms } from "@/lib/products";
+import BarChart from "@/components/viz/BarChart";
+
+// 프리미엄 라인 경제수명 (년) — 각 제품 카탈로그 기준, 최대 두께 규격
+const LIFESPAN_BARS = [
+  { label: "다이아스타", value: 5, display: "5년", highlight: true },
+  { label: "미산란 다이아스타", value: 5, display: "5년" },
+  { label: "이스타 S", value: 5, display: "5년" },
+  { label: "미산란 이스타", value: 3, display: "3년" },
+  { label: "산삭시아", value: 3, display: "3년" },
+];
 
 export const metadata: Metadata = {
   title: "PO필름 비교",
@@ -70,10 +80,21 @@ export default function ComparePage() {
         </table>
       </div>
 
-      <p className="mt-8 text-[12px] text-soil-brown-mute">
-        * 현재 시드된 5종 우선 표시. 프리미엄 8종 + 스탠다드 7종 전체는 후속
-        마일스톤에서 채워집니다.
-      </p>
+      <div className="mt-24">
+        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
+          Premium Lifespan
+        </p>
+        <h2 className="text-[28px] md:text-[36px] leading-[1.2]">
+          프리미엄 필름 경제수명 비교
+        </h2>
+        <p className="mt-4 max-w-[58ch] text-[16px] leading-[1.85] text-soil-brown-soft">
+          한 번 씌우고 얼마나 오래 쓰는가 — 프리미엄 선택의 첫 기준입니다.
+          각 제품 카탈로그의 최대 두께 규격 기준입니다.
+        </p>
+        <div className="mt-12 max-w-[880px]">
+          <BarChart bars={LIFESPAN_BARS} heightClass="h-[220px] md:h-[260px]" />
+        </div>
+      </div>
     </section>
   );
 }

@@ -22,19 +22,20 @@ export const NAV: NavSection[] = [
     href: "/about",
     groups: [
       {
-        title: "회사",
+        title: "새미그룹",
         items: [
+          { label: "한눈에 보기", href: "/about", caption: "철학·사업부" },
           { label: "대표 인사말", href: "/about/ceo" },
-          { label: "계열 회사", href: "/about/companies" },
-          { label: "연혁", href: "/about/history" },
+          { label: "4개의 회사", href: "/about/companies" },
+          { label: "연혁", href: "/about/history", caption: "2003~" },
         ],
       },
       {
-        title: "현장",
+        title: "역량과 현장",
         items: [
           { label: "농업연구소", href: "/about/research" },
           { label: "공장과 시설", href: "/about/factories" },
-          { label: "협력 회사", href: "/about/partners" },
+          { label: "글로벌 파트너", href: "/about/partners" },
         ],
       },
     ],
@@ -153,10 +154,19 @@ export const NAV: NavSection[] = [
     href: "/machinery",
     groups: [
       {
-        title: "기계",
+        title: "정밀 기계 부품",
         items: [
-          { label: "정밀 기계 부품", href: "/machinery/parts" },
-          { label: "YASKAWA 로봇", href: "/machinery/yaskawa" },
+          { label: "조선", href: "/machinery/parts#shipbuilding" },
+          { label: "건설", href: "/machinery/parts#construction" },
+          { label: "농업", href: "/machinery/parts#agriculture" },
+          { label: "산업", href: "/machinery/parts#industry" },
+        ],
+      },
+      {
+        title: "자동화",
+        items: [
+          { label: "YASKAWA 로봇", href: "/machinery/yaskawa", caption: "Since 2012" },
+          { label: "기계 파트너", href: "/about/partners" },
         ],
       },
     ],

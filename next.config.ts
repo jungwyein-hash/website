@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "*.r2.dev" },
       { protocol: "https", hostname: "*.r2.cloudflarestorage.com" },
       { protocol: "https", hostname: "cdn.saemigroup.com" },
+      // YASKAWA 로봇 라인업 이미지 (saemi-intro와 동일 출처)
+      { protocol: "https", hostname: "cdn.robodk.com" },
     ],
   },
   async headers() {

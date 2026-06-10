@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SmartImage from "@/components/media/SmartImage";
+import { YASKAWA_ROBOTS } from "@/content/machinery";
 
 export const metadata: Metadata = {
   title: "YASKAWA MOTOMAN",
   description:
-    "일본 야스카와전기의 산업용 로봇 라인업 — MPP·MPK·MPL·HC·SP·GP·AR·MC. 새미그룹이 한국에 공급합니다.",
+    "일본 야스카와전기의 산업용 로봇 라인업 — 피킹·협동·용접·핸들링. 새미그룹이 한국에 공급합니다.",
 };
-
-const LINES = [
-  { code: "MPP / MPK / MPL", title: "피킹 · 팔레타이징", body: "고속 피킹과 팔레타이징을 위한 델타·산업용 로봇 라인." },
-  { code: "HC", title: "협동 로봇", body: "사람과 함께 작업하는 협동 로봇. 안전과 작업자 효율의 균형." },
-  { code: "SP", title: "스폿 용접", body: "자동차·금속 가공에서 정밀한 스폿 용접을 담당하는 라인." },
-  { code: "GP", title: "범용 핸들링", body: "조립·이송·검사를 아우르는 범용 핸들링 로봇." },
-  { code: "AR", title: "아크 용접", body: "강도와 비드 품질이 요구되는 아크 용접 전용 로봇." },
-  { code: "MC", title: "레이저 가공", body: "레이저 절단·용접을 위한 정밀 가공 라인." },
-];
 
 export default function YaskawaPage() {
   return (
@@ -34,15 +27,24 @@ export default function YaskawaPage() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-12">
-        <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
-          {LINES.map((l) => (
-            <li key={l.code} className="border-t border-line pt-6">
-              <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
-                {l.code}
+        <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
+          {YASKAWA_ROBOTS.map((r) => (
+            <li key={r.model}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[8px] bg-paper-soft">
+                <SmartImage
+                  src={r.image}
+                  alt={`YASKAWA MOTOMAN ${r.model} — ${r.label}`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-contain p-6"
+                />
+              </div>
+              <p className="mt-5 font-tech text-[12px] uppercase text-soil-brown-mute">
+                {r.model}
               </p>
-              <h3 className="text-[24px] mb-3">{l.title}</h3>
-              <p className="text-[16px] leading-[1.75] text-soil-brown-soft max-w-[40ch]">
-                {l.body}
+              <h3 className="mt-1 text-[24px]">{r.label}</h3>
+              <p className="mt-2 text-[16px] leading-[1.75] text-soil-brown-soft max-w-[40ch]">
+                {r.body}
               </p>
             </li>
           ))}

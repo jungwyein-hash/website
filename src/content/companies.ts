@@ -9,6 +9,8 @@ export interface Company {
   phone?: string;
   email?: string;
   facts?: { label: string; value: string }[];
+  /** 카드용 핵심 역할 요약 (saemi-intro 기준 4줄) */
+  details?: string[];
   partners?: string[];
   buildingImage?: string;
 }
@@ -30,6 +32,12 @@ export const COMPANIES: Company[] = [
       { label: "건평", value: "5,892㎡" },
       { label: "설립", value: "2004년" },
     ],
+    details: [
+      "농업용 PO필름 제조·가공",
+      "부자재 제조·가공",
+      "대지 8,524㎡ / 건평 5,892㎡",
+      "스미토모화학 외 글로벌 기업 협력·수입",
+    ],
     partners: ["sumitomo", "takiron"],
     buildingImage: "company/headquarters/arts-사옥.webp",
   },
@@ -48,6 +56,12 @@ export const COMPANIES: Company[] = [
       { label: "대지", value: "6,537㎡" },
       { label: "건평", value: "4,839㎡" },
       { label: "설립", value: "2019년" },
+    ],
+    details: [
+      "농업용 PO필름 제조·가공",
+      "부자재 제조·가공",
+      "대지 6,537㎡ / 건평 4,839㎡",
+      "MKV Advance 외 글로벌 기업 협력·수입",
     ],
     partners: ["mitsubishi", "maruzen", "yahata"],
     buildingImage: "company/headquarters/제이아이에스-사옥.webp",
@@ -68,7 +82,14 @@ export const COMPANIES: Company[] = [
       { label: "설립", value: "2021년" },
       { label: "운영", value: "농업연구소·유통" },
     ],
+    details: [
+      "농업용 PO필름 판매전문",
+      "부자재 판매전문",
+      "농업연구소 운영 — 한국농업 모니터링",
+      "품질 연구 및 신제품 개발",
+    ],
     partners: [],
+    buildingImage: "products/po-film/standard/coating-plus/hero/exterior-02.webp",
   },
   {
     slug: "thehannong",
@@ -83,6 +104,12 @@ export const COMPANIES: Company[] = [
       { label: "신사옥", value: "2024 준공" },
       { label: "설립", value: "2021년" },
       { label: "사업", value: "농약·비료" },
+    ],
+    details: [
+      "작물 보호제·영양제 제조·판매",
+      "충북 충주 소재",
+      "스미카·후타바·팜한농 등 협력·수입",
+      "한중 합자회사 산농대미 운영",
     ],
     partners: ["sumika", "futaba", "farmhannong"],
     buildingImage: "company/headquarters/더한농-사옥.webp",

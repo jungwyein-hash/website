@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { getPoFilmsByTier } from "@/lib/products";
 import ProductIndex from "@/components/product/ProductIndex";
 import { r2Url } from "@/lib/r2-image";
+import StatStrip from "@/components/viz/StatStrip";
+import BarChart from "@/components/viz/BarChart";
+import { PO_FILM_SALES, PO_FILM_STATS } from "@/content/group-stats";
 
 export const metadata: Metadata = {
   title: "PO필름",
@@ -68,6 +71,34 @@ export default function PoFilmHub() {
                 </video>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 성장 실적 — 카운트업 통계 + 매출 그래프 */}
+      <section className="border-t border-line bg-paper-soft px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-[1600px]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="font-tech text-[12px] font-semibold text-spring-blue">
+                PERFORMANCE
+              </p>
+              <h2 className="mt-5 text-[32px] md:text-[44px] font-semibold leading-[1.18] text-ink-invert">
+                지속적인 성장,
+                <br />
+                새미 PO필름.
+              </h2>
+              <p className="mt-6 max-w-[40ch] text-[16px] leading-relaxed text-soil-brown-soft">
+                검증된 품질과 고객 신뢰를 바탕으로 매년 꾸준한 성장을 이어가고
+                있습니다. 연간 판매량 기준입니다.
+              </p>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <BarChart bars={PO_FILM_SALES} />
+            </div>
+          </div>
+          <div className="mt-20 border-t border-line pt-14">
+            <StatStrip stats={PO_FILM_STATS} />
           </div>
         </div>
       </section>
