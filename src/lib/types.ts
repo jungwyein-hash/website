@@ -13,7 +13,8 @@ export type FilmType =
   | "차열"
   | "변광"
   | "보온터널"
-  | "녹색멀칭";
+  | "녹색멀칭"
+  | "흑색멀칭";
 
 export type Badge =
   | "NEW"

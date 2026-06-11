@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getPoFilmsByTier } from "@/lib/products";
+import { getPoFilms, getPoFilmsByTier } from "@/lib/products";
 import ProductIndex from "@/components/product/ProductIndex";
 import { r2Url } from "@/lib/r2-image";
 import StatStrip from "@/components/viz/StatStrip";
@@ -21,9 +21,19 @@ const heroPosterSrc = r2Url(
   "design-assets/korea-agriculture/250701-성주-항공뷰/hero/exterior-01.webp",
 );
 
+// 새미테크 — 독자 특허 라인 (메뉴 분류와 동일)
+const SAEMITECH_SLUGS = ["sunpower", "coating-cool", "allseason"];
+
 export default function PoFilmHub() {
-  const premium = getPoFilmsByTier("premium");
-  const standard = getPoFilmsByTier("standard");
+  const premium = getPoFilmsByTier("premium").filter(
+    (p) => !SAEMITECH_SLUGS.includes(p.slug)
+  );
+  const standard = getPoFilmsByTier("standard").filter(
+    (p) => !SAEMITECH_SLUGS.includes(p.slug)
+  );
+  const saemitech = getPoFilms().filter((p) =>
+    SAEMITECH_SLUGS.includes(p.slug)
+  );
 
   return (
     <>
@@ -150,6 +160,56 @@ export default function PoFilmHub() {
             </div>
           </div>
           <ProductIndex products={standard} hrefBase="/po-film" />
+        </div>
+      </section>
+
+      {/* 새미테크 — 독자 특허 라인 */}
+      <section
+        id="saemitech"
+        className="border-t border-line bg-spring-blue/[0.05] px-6 py-20 lg:px-10 lg:py-28"
+      >
+        <div className="mx-auto max-w-[1600px]">
+          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-3">
+              <p className="font-tech text-[12px] font-semibold text-spring-blue">
+                SAEMI-TECH
+              </p>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-5">
+              <h2 className="text-[36px] md:text-[56px] lg:text-[72px] font-semibold leading-[1.12] text-ink-invert">
+                새미의 독자 기술,
+                <br />
+                새미테크.
+              </h2>
+              <p className="mt-6 max-w-[58ch] text-[16px] leading-relaxed text-soil-brown-soft">
+                세계특허 분광·차열과 차세대 변광 — 새미의 독자 첨단 기술로
+                완성한 차세대 기능성 필름입니다.
+              </p>
+            </div>
+          </div>
+          <ProductIndex products={saemitech} hrefBase="/po-film" />
+        </div>
+      </section>
+
+      {/* 비교와 자료 */}
+      <section className="border-t border-line bg-white px-6 py-16 lg:px-10">
+        <div className="mx-auto grid max-w-[1600px] gap-px border border-line bg-line md:grid-cols-4">
+          {[
+            { href: "/po-film/compare", title: "필름 비교", desc: "전 라인업 한 표로" },
+            { href: "/resources", title: "제품 카탈로그", desc: "PDF 내려받기" },
+            { href: "/po-film/by-crop", title: "작물별 추천", desc: "우수농가의 선택" },
+            { href: "/po-film/quality", title: "A/S·품질보증", desc: "3단계 검사와 사후관리" },
+          ].map((l) => (
+            <Link key={l.href} href={l.href} className="group bg-white p-8">
+              <h3 className="text-[20px] transition-colors group-hover:text-spring-blue">
+                {l.title}
+              </h3>
+              <p className="mt-2 text-[13px] text-soil-brown-mute">{l.desc}</p>
+              <span className="mt-5 inline-block link-underline text-[14px]">
+                바로 가기 →
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
     </>

@@ -7,6 +7,7 @@ import { sansaxia } from "./sansaxia";
 import { sunpower } from "./sunpower";
 import { oya } from "./oya";
 import { sawasawa } from "./sawasawa";
+import { supreme7 } from "./supreme7";
 import { coatingPlus } from "./coating-plus";
 import { coatingStrong } from "./coating-strong";
 import { coatingCool } from "./coating-cool";
@@ -14,6 +15,7 @@ import { allSeason } from "./allseason";
 import { anta } from "./anta";
 import { ttasine } from "./ttasine";
 import { greenforce } from "./greenforce";
+import { blackforce } from "./blackforce";
 
 /** 표시 순서 — 프리미엄 → 스탠다드, 그룹 안에서는 대표성 순. */
 export const PO_FILMS: Product[] = [
@@ -26,6 +28,7 @@ export const PO_FILMS: Product[] = [
   sunpower,
   oya,
   sawasawa,
+  supreme7,
   // Standard (7)
   coatingPlus,
   coatingStrong,
@@ -34,4 +37,5 @@ export const PO_FILMS: Product[] = [
   anta,
   ttasine,
   greenforce,
+  blackforce,
 ];

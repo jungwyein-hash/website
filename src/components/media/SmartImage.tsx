@@ -16,7 +16,8 @@ export default function SmartImage({ src, alt, className, ...rest }: Props) {
     src.startsWith("http://") ||
     src.startsWith("https://") ||
     src.startsWith("/");
-  const resolved = isAbsolute ? src : r2Url(src);
+  // src가 빈 문자열이면(자산 준비 전) 플레이스홀더로
+  const resolved = src ? (isAbsolute ? src : r2Url(src)) : "";
 
   if (!resolved) {
     return (

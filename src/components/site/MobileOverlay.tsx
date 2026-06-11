@@ -52,6 +52,14 @@ export default function MobileOverlay({
 
       <nav className="px-6 py-10" aria-label="모바일 메뉴">
         <div className="space-y-9">
+          {/* 데스크탑에서는 우측 상단에 노출 — 모바일에서는 최상위로 */}
+          <Link
+            href="/best-farms"
+            onClick={onClose}
+            className="block text-[32px] font-semibold leading-tight text-ink-invert"
+          >
+            우수농가
+          </Link>
           {NAV.map((section) => (
             <div key={section.href}>
               <Link
@@ -64,8 +72,11 @@ export default function MobileOverlay({
               {section.groups && (
                 <ul className="mt-5 grid gap-2 border-l border-line pl-4">
                   {section.groups.flatMap((g) =>
-                    g.items.map((it) => (
-                      <li key={it.href}>
+                    // 시리즈(하위 목록 보유) 항목은 하위 제품들로, 추가 섹션(more)도 합쳐서 노출
+                    [...g.items, ...(g.more?.flatMap((s) => s.items) ?? [])]
+                      .flatMap((it) => (it.children?.length ? it.children : [it]))
+                      .map((it) => (
+                      <li key={`${it.href}-${it.label}`}>
                         <Link
                           href={it.href}
                           onClick={onClose}

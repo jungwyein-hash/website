@@ -230,6 +230,32 @@ export const ACCESSORIES: Accessory[] = [
     badges: ["Made in Japan"],
   },
   {
+    slug: "saemi-insect-net",
+    category: "accessories",
+    accessoryCategory: "insect",
+    brand: "saemi",
+    name: { ko: "새미 방충망" },
+    tagline: { ko: "방충망 — 망목 #1.0, 폭 1.5·1.8m. 새미의 기본기." },
+    intro: {
+      ko: "새미 방충망은 새미 자체 브랜드의 방충망. 망목 #1.0에 폭 1.5m와 1.8m 두 규격으로, 일반 해충 차단에 필요한 기본을 충실하게 갖췄습니다.",
+    },
+    bigSpecs: [
+      { label: "망목", value: "#1.0", unit: "mm" },
+      { label: "폭", value: "1.5 · 1.8", unit: "m" },
+      { label: "브랜드", value: "새미", unit: "" },
+    ],
+    highlights: [
+      { title: "표준 망목 #1.0", body: "일반 해충 차단에 가장 널리 쓰이는 망목 규격입니다." },
+      { title: "두 가지 폭", body: "1.5m와 1.8m — 하우스 측창·출입구 폭에 맞춰 고릅니다." },
+      { title: "새미 자체 브랜드", body: "새미가 직접 기획하고 품질을 관리하는 방충망입니다." },
+    ],
+    hero: {
+      src: "",
+      alt: "새미 방충망",
+    },
+    badges: ["자체 브랜드"],
+  },
+  {
     slug: "band",
     category: "accessories",
     accessoryCategory: "string",

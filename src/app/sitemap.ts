@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/partners",
     "/po-film",
     "/po-film/compare",
+    "/po-film/by-crop",
+    "/po-film/quality",
     "/accessories",
     "/crop-care",
     "/machinery",
