@@ -40,6 +40,7 @@ export const NAV: NavSection[] = [
           { label: "4개의 회사", href: "/about/companies" },
           { label: "연혁", href: "/about/history", caption: "2003~" },
           { label: "소식", href: "/news" },
+          { label: "기존 홈", href: "/home-backup", caption: "백업" },
         ],
       },
       {

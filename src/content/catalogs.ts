@@ -58,6 +58,13 @@ export const CATALOGS: Catalog[] = [
     sizeMb: 36,
   },
   {
+    key: "company/catalog/supreme7-kr.pdf",
+    title: "슈프림7 카탈로그",
+    description: "업계 최초 7층 PO필름 — 초정밀 코팅 설계와 최고급 원료.",
+    category: "po-film",
+    sizeMb: 115,
+  },
+  {
     key: "company/catalog/oya-sawasawa.pdf",
     title: "오야·사와사와 카탈로그",
     description: "일본 직수입 프리미엄 — 투명(오야)과 산란(사와사와) 라인.",

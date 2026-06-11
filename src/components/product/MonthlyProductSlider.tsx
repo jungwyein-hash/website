@@ -84,9 +84,14 @@ export default function MonthlyProductSlider({
   const next = () => setIndex((i) => (i + 1) % count);
 
   return (
-    <section className="relative overflow-hidden bg-paper-warm">
+    <section className="relative overflow-hidden bg-paper-warm pb-16 md:pb-20 lg:pb-24">
+      {/* 섹션 타이틀 — CONTACT '나에게 맞는 제품 알아보기'와 같은 타이포 */}
+      <h2 className="px-6 pt-16 text-center text-[36px] md:text-[56px] lg:text-[72px] font-semibold leading-[1.08] tracking-display text-ink-invert md:pt-20 lg:pt-24">
+        이달의 제품
+      </h2>
+      {/* 이미지(inset-y-0)가 슬라이드 높이를 가득 채우므로, 위·아래 여백은 트랙 마진과 섹션 패딩으로 만든다 */}
       <div
-        className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        className="mt-16 flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-20 lg:mt-24"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {SLIDES.map((s, i) => (
@@ -95,13 +100,10 @@ export default function MonthlyProductSlider({
             <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
               <HeroImage url={heroUrls[i]} alt={s.heroAlt} sizes="50vw" />
             </div>
-            <div className="relative mx-auto max-w-[1600px] px-6 py-24 md:py-32 lg:px-10 lg:py-36">
+            <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
               <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <div className="flex items-center gap-3">
-                    <p className="font-tech text-[12px] font-semibold text-spring-blue">
-                      이달의 제품
-                    </p>
                     <span className="flex items-center gap-1.5">
                       {SLIDES.map((sl, di) => (
                         <button

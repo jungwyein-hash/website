@@ -1,5 +1,6 @@
 import Link from "next/link";
-import SmartImage from "@/components/media/SmartImage";
+import Supreme7Logo from "@/components/home/Supreme7Logo";
+import ProductTileGrid from "@/components/home/ProductTileGrid";
 import MonthlyProductSlider from "@/components/product/MonthlyProductSlider";
 import BestFarmsMarquee from "@/components/product/BestFarmsMarquee";
 import { r2Url } from "@/lib/r2-image";
@@ -7,7 +8,13 @@ import { diastar } from "@/content/products/po-film/diastar";
 import { misanranDiastar } from "@/content/products/po-film/misanran-diastar";
 import { bestFarms } from "@/content/best-farms";
 
-const heroVideoSrc = r2Url("design-assets/web/day-to-night-loop.mp4");
+// 슈프림7 공식 히어로 영상 (밤 → 낮 루프)
+const heroVideoSrc = r2Url(
+  "products/po-film/premium/supreme7/hero/videos/day-to-night-loop.mp4",
+);
+const supreme7CatalogHref = `/api/r2/asset?key=${encodeURIComponent(
+  "company/catalog/supreme7-kr.pdf",
+)}`;
 
 // 우수농가 40인 마퀴 카드 — 서버에서 r2Url로 사진 URL 해석
 const farmMarqueeCards = bestFarms.map((f) => ({
@@ -20,51 +27,12 @@ const farmMarqueeCards = bestFarms.map((f) => ({
   url: r2Url(f.heroKey),
 }));
 
-const metrics = [
-  { value: "2004", label: "설립" },
-  { value: "4", label: "계열 회사" },
-  { value: "4", label: "사업 분야" },
-  { value: "No.1", label: "코팅 PO필름 판매" },
-];
-
-const divisions = [
-  {
-    id: "01",
-    title: "PO필름",
-    body: "하우스 조건에 맞는 프리미엄 필름과 스탠다드 필름을 공급합니다.",
-    href: "/po-film",
-    image: "products/po-film/premium/diastar/hero/interior-01.webp",
-  },
-  {
-    id: "02",
-    title: "하우스 부자재",
-    body: "스마트한 농업을 완성하는 새미의 고효율, 고기능 부자재를 공급합니다.",
-    href: "/accessories",
-    image:
-      "products/greenhouse-materials/sansan-curtain/hero/interior-01.webp",
-  },
-  {
-    id: "03",
-    title: "농약·비료",
-    body: "작물 보호와 생육 관리에 필요한 제품을 대리점과 농가에 공급합니다.",
-    href: "/crop-care",
-    image:
-      "products/fertilizer-pesticide/비료/hero-shots/오메라 골드 1,2호, 점보칼스타, 칼라이찌방/on-lawn/hero-01.webp",
-  },
-  {
-    id: "04",
-    title: "기계·FA",
-    body: "정밀 기계 부품과 산업 자동화 제품을 공급합니다.",
-    href: "/machinery",
-    image: "products/machinery/완제품/hydraulic-cylinder/hydraulic-cylinder-01.webp",
-  },
-];
-
 export default function Home() {
   return (
     <div className="flex flex-col gap-3 bg-paper-soft">
-      <section className="relative isolate flex min-h-[600px] items-center overflow-hidden bg-black md:min-h-[680px] lg:min-h-[760px]">
-        {/* 배경 영상: 밤 → 낮 */}
+      {/* 슈프림7 광고 배너 — Apple 랜딩 스타일 (중앙 정렬, 다크, 영상 배경) */}
+      <section className="relative isolate flex min-h-[640px] items-center justify-center overflow-hidden bg-black md:min-h-[720px] lg:min-h-[800px]">
+        {/* 배경: 슈프림7 히어로 영상 (밤 → 낮 루프) */}
         <video
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
           autoPlay
@@ -76,117 +44,60 @@ export default function Home() {
         >
           <source src={heroVideoSrc} type="video/mp4" />
         </video>
-        {/* 가독성 스크림 — 밤·낮 모두 흰 텍스트 대비 확보 */}
+        {/* 중앙 카피 가독성 스크림 */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10"
+          className="pointer-events-none absolute inset-0 bg-black/35"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/50 to-transparent"
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/55 to-transparent"
         />
 
-        <div className="relative mx-auto w-full max-w-[1600px] px-6 py-20 lg:px-10">
-          <p className="fade-rise text-[12px] font-semibold tracking-[0.22em] text-white">
-            SAEMI GROUP
+        <div className="relative mx-auto w-full max-w-[880px] px-6 py-24 text-center">
+          <p className="fade-rise text-[13px] font-semibold tracking-[0.22em] text-white/70">
+            새미 코팅PO · NEW
           </p>
-          <h1 className="fade-rise mt-6 max-w-[14ch] text-[44px] md:text-[60px] lg:text-[72px] font-semibold leading-[1.04] tracking-display text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.35)]">
-            프리미엄 종합농자재
+          <h1 className="fade-rise mt-7" style={{ animationDelay: "60ms" }}>
+            <Supreme7Logo className="mx-auto w-[260px] text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.35)] md:w-[380px] lg:w-[460px]" />
           </h1>
           <p
-            className="fade-rise mt-7 max-w-[42ch] text-[20px] md:text-[24px] font-medium leading-snug text-white/90"
-            style={{ animationDelay: "90ms" }}
+            className="fade-rise mx-auto mt-7 max-w-[34ch] text-[22px] md:text-[28px] font-semibold leading-[1.4] text-white text-balance"
+            style={{ animationDelay: "130ms" }}
           >
-            농사에 필요한 모든 것,
+            업계 최초 7층 PO필름.
             <br />
-            필름 · 부자재 · 농약 · 기계까지 새미그룹이 공급합니다.
+            초정밀 코팅 설계, 그리고 최고급 원료.
+          </p>
+          <p
+            className="fade-rise mt-4 text-[15px] text-white/60"
+            style={{ animationDelay: "180ms" }}
+          >
+            2026년, 까다로운 하우스를 위해 태어났습니다.
           </p>
           <div
-            className="fade-rise mt-10 flex flex-wrap gap-3"
-            style={{ animationDelay: "150ms" }}
+            className="fade-rise mt-9 flex flex-wrap items-center justify-center gap-4"
+            style={{ animationDelay: "230ms" }}
           >
-            <Link href="/po-film" className="apple-button apple-button-primary">
-              제품 보기
-            </Link>
             <Link
-              href="/contact/quote"
+              href="/po-film/premium/supreme7"
+              className="apple-button apple-button-primary"
+            >
+              자세히 보기
+            </Link>
+            <a
+              href={supreme7CatalogHref}
               className="apple-button border border-white/60 text-white backdrop-blur-sm transition-colors hover:bg-white/10"
             >
-              견적 문의
-            </Link>
+              카탈로그 보기
+            </a>
           </div>
-
-          <dl
-            className="fade-rise mt-16 grid max-w-[820px] grid-cols-2 gap-x-10 gap-y-7 border-t border-white/25 pt-9 sm:grid-cols-4"
-            style={{ animationDelay: "220ms" }}
-          >
-            {metrics.map((item) => (
-              <div key={item.label}>
-                <dt className="sr-only">{item.label}</dt>
-                <dd className="font-tech text-[32px] font-semibold leading-none text-white">
-                  {item.value}
-                </dd>
-                <p className="mt-2 text-[12px] font-semibold text-white/70">
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </dl>
         </div>
       </section>
 
-      <section className="bg-paper">
-        <div className="mx-auto max-w-[1600px] px-6 py-24 md:py-32 lg:px-10 lg:py-36">
-          <div className="mx-auto max-w-[760px] text-center apple-reveal">
-            <p className="font-tech text-[12px] font-semibold text-spring-blue">
-              BUSINESS AREAS
-            </p>
-            <h2 className="mt-4 text-[32px] md:text-[48px] lg:text-[60px] font-semibold leading-[1.08] tracking-display text-ink-invert">
-              농업 전반을 아우르는
-              <br />
-              4개의 핵심 사업부
-            </h2>
-            <p className="mt-6 text-[20px] leading-relaxed text-soil-brown-soft">
-              새미그룹은 농업 전반에 걸친 다양한 농업경영인들의 필요를 적시에
-              충족시키고, 최고의 품질과 가치를 제공하기 위해 4개의 농산업 특화
-              기업을 운영하고 있습니다.
-            </p>
-          </div>
-
-          <div className="mt-16 grid grid-cols-1 gap-4 md:mt-20 md:grid-cols-2 xl:grid-cols-4">
-            {divisions.map((division) => (
-              <Link
-                key={division.href}
-                href={division.href}
-                className="group surface-panel overflow-hidden bg-white transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-paper-soft">
-                  <SmartImage
-                    src={division.image}
-                    alt={`${division.title} 제품 이미지`}
-                    fill
-                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="font-tech text-[12px] font-semibold text-spring-blue">
-                    {division.id}
-                  </p>
-                  <h3 className="mt-3 text-[24px] font-semibold leading-tight text-ink-invert">
-                    {division.title}
-                  </h3>
-                  <p className="mt-3 min-h-[5rem] text-[16px] leading-relaxed text-soil-brown-soft">
-                    {division.body}
-                  </p>
-                  <span className="mt-5 inline-flex text-[16px] font-semibold text-spring-blue">
-                    {division.title} 보기
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+      {/* 대표 제품 타일 그리드 — Apple 홈 section-promo 스타일 */}
+      <section className="bg-white p-3">
+        <ProductTileGrid />
       </section>
 
       <MonthlyProductSlider

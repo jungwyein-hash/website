@@ -26,35 +26,37 @@ const CEO_PARAGRAPHS = [
   "앞으로도 기후변화와 산업환경의 변화에 유연하게 대응하며, 지속가능한 한국농업의 미래를 위한 차세대 기술과 제품 개발에 끊임없이 도전하겠습니다.",
 ];
 
-// 농사의 흐름 순서 — saemi-intro biz-flow
-const BIZ_FLOW = [
+// 4개 핵심 사업부 — 홈에서 이전한 이미지 카드
+const DIVISIONS = [
   {
-    num: "01",
-    name: "PO필름 사업부",
-    phase: "전장 · 농사준비",
-    desc: "PO필름, 부자재, 차광·차열 자재",
+    id: "01",
+    title: "PO필름",
+    body: "하우스 조건에 맞는 프리미엄 필름과 스탠다드 필름을 공급합니다.",
     href: "/po-film",
+    image: "products/po-film/premium/diastar/hero/interior-01.webp",
   },
   {
-    num: "02",
-    name: "농약·비료 사업부",
-    phase: "농사",
-    desc: "작물보호제, 작물영양제",
+    id: "02",
+    title: "하우스 부자재",
+    body: "스마트한 농업을 완성하는 새미의 고효율, 고기능 부자재를 공급합니다.",
+    href: "/accessories",
+    image:
+      "products/greenhouse-materials/sansan-curtain/hero/interior-01.webp",
+  },
+  {
+    id: "03",
+    title: "농약·비료",
+    body: "작물 보호와 생육 관리에 필요한 제품을 대리점과 농가에 공급합니다.",
     href: "/crop-care",
+    image:
+      "products/fertilizer-pesticide/비료/hero-shots/오메라 골드 1,2호, 점보칼스타, 칼라이찌방/on-lawn/hero-01.webp",
   },
   {
-    num: "03",
-    name: "기계·FA 사업부",
-    phase: "농사",
-    desc: "정밀기계, 산업용 로봇",
+    id: "04",
+    title: "기계·FA",
+    body: "정밀 기계 부품과 산업 자동화 제품을 공급합니다.",
     href: "/machinery",
-  },
-  {
-    num: "04",
-    name: "유통사업부",
-    phase: "수확 후",
-    desc: "농산물 직거래, 산지직송",
-    href: "/best-farms",
+    image: "products/machinery/완제품/hydraulic-cylinder/hydraulic-cylinder-01.webp",
   },
 ];
 
@@ -205,48 +207,51 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. 4개 사업부 — 농사의 흐름 */}
+      {/* 5. 4개 사업부 — 홈에서 이전한 이미지 카드 섹션 */}
       <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
         <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
           Business
         </p>
         <h2 className="text-[32px] md:text-[44px] leading-[1.2] max-w-[20ch]">
-          농업의 전반을 아우르는 4개의 핵심사업부
+          농업 전반을 아우르는 4개의 핵심 사업부
         </h2>
         <p className="mt-6 max-w-[58ch] text-[16px] leading-[1.85] text-soil-brown-soft">
-          농사를 준비하는 순간부터 수확 이후까지 — 사업부는 농사의 흐름을
-          따라 이어집니다.
+          새미그룹은 농업 전반에 걸친 다양한 농업경영인들의 필요를 적시에
+          충족시키고, 최고의 품질과 가치를 제공하기 위해 4개의 농산업 특화
+          기업을 운영하고 있습니다.
         </p>
 
-        <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch">
-          {BIZ_FLOW.map((b, i) => (
-            <div key={b.num} className="contents">
-              {i > 0 && (
-                <div
-                  aria-hidden
-                  className="hidden lg:flex items-center justify-center text-[20px] text-soil-brown-mute"
-                >
-                  →
-                </div>
-              )}
-              <Link href={b.href} className="surface-panel block bg-white p-7 group">
-                <div className="flex items-baseline justify-between">
-                  <span className="font-tech text-[13px] font-semibold text-spring-blue">
-                    {b.num}
-                  </span>
-                  <span className="text-[12px] text-soil-brown-mute">
-                    {b.phase}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-[20px] leading-snug">{b.name}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-soil-brown-soft">
-                  {b.desc}
+        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {DIVISIONS.map((division) => (
+            <Link
+              key={division.href}
+              href={division.href}
+              className="group surface-panel overflow-hidden bg-white transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-paper-soft">
+                <SmartImage
+                  src={division.image}
+                  alt={`${division.title} 제품 이미지`}
+                  fill
+                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                />
+              </div>
+              <div className="p-6">
+                <p className="font-tech text-[12px] font-semibold text-spring-blue">
+                  {division.id}
                 </p>
-                <span className="mt-5 inline-block text-[13px] text-spring-blue opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                  보러 가기 →
+                <h3 className="mt-3 text-[22px] leading-tight">
+                  {division.title}
+                </h3>
+                <p className="mt-3 min-h-[4.5rem] text-[15px] leading-relaxed text-soil-brown-soft">
+                  {division.body}
+                </p>
+                <span className="mt-4 inline-block text-[14px] text-spring-blue opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  {division.title} 보기 →
                 </span>
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
