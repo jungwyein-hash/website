@@ -59,7 +59,7 @@ export default async function AccessoryPage({ params }: { params: Params }) {
       {product.intro && (
         <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-3">
-            <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute">소개</p>
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue">소개</p>
           </div>
           <p className="lg:col-span-8 lg:col-start-5 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown">
             {product.intro.ko}
@@ -70,9 +70,9 @@ export default async function AccessoryPage({ params }: { params: Params }) {
       <section id="highlights" className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20">
         <div className="grid lg:grid-cols-12 gap-12 mb-12">
           <div className="lg:col-span-3">
-            <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute">Highlights</p>
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue">Highlights</p>
           </div>
-          <h2 className="lg:col-span-8 lg:col-start-5 text-[28px] md:text-[36px] lg:text-[44px] max-w-[20ch]">
+          <h2 className="lg:col-span-8 lg:col-start-5 text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-display text-ink-invert max-w-[20ch]">
             왜 {product.name.ko}인가.
           </h2>
         </div>
@@ -90,8 +90,8 @@ export default async function AccessoryPage({ params }: { params: Params }) {
         <section id="specs" className="bg-paper-soft border-y border-line">
           <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-3">
-              <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute">Specifications</p>
-              <h2 className="mt-4 text-[28px]">사양표</h2>
+              <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue">Specifications</p>
+              <h2 className="mt-4 text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-display text-ink-invert">사양표</h2>
             </div>
             <div className="lg:col-span-8 lg:col-start-5">
               <SpecTable groups={product.fullSpecs} />
@@ -103,19 +103,19 @@ export default async function AccessoryPage({ params }: { params: Params }) {
       <section id="related" className="border-t border-line bg-paper-soft text-ink-invert">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">다음 단계</p>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2]">
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">다음 단계</p>
+            <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-display text-ink-invert">
               {product.name.ko},
               <br />가까운 새미대리점에서 만나보세요.
             </h2>
-            <div className="mt-8 flex flex-wrap gap-8 text-[16px]">
-              <Link href="/contact/quote" className="text-spring-blue hover:opacity-80">견적 문의 →</Link>
-              <Link href="/contact/dealers" className="text-soil-brown-soft hover:text-spring-blue">대리점 찾기</Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact/quote" className="apple-button apple-button-primary">견적 문의</Link>
+              <Link href="/contact/dealers" className="apple-button apple-button-secondary">대리점 찾기</Link>
             </div>
           </div>
           {related.length > 0 && (
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">관련 제품</p>
+              <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">관련 제품</p>
               <ul className="divide-y divide-line border-y border-line">
                 {related.map((r) => (
                   <li key={r.slug}>

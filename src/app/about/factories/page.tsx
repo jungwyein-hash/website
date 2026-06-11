@@ -24,47 +24,51 @@ const CAPABILITIES = [
 
 export default function FactoriesPage() {
   return (
-    <article>
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-16">
-        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
-          Factories &amp; HQ
-        </p>
-        <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
-          공장과 시설
-        </h1>
-        <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
-          PO필름과 부자재의 생산은 양산 산막공단·상북면에서, 농약·비료의 제조는
-          충주에서 매일 이뤄집니다. 국내 최고 수준의 가공·생산 기술과 체계적
-          시스템으로, 원하는 규격의 제품을 신속하게 맞춤 공급합니다.
-        </p>
+    <article className="flex flex-col gap-3 bg-paper-soft">
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-16">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
+            Factories &amp; HQ
+          </p>
+          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[16ch]">
+            공장과 시설
+          </h1>
+          <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
+            PO필름과 부자재의 생산은 양산 산막공단·상북면에서, 농약·비료의 제조는
+            충주에서 매일 이뤄집니다. 국내 최고 수준의 가공·생산 기술과 체계적
+            시스템으로, 원하는 규격의 제품을 신속하게 맞춤 공급합니다.
+          </p>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-12 grid md:grid-cols-2 gap-6">
-        {PROD_LINES.map((p) => (
-          <figure
-            key={p.src}
-            className="relative aspect-[4/3] bg-line"
-          >
-            <SmartImage
-              src={p.src}
-              alt={p.alt}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </figure>
-        ))}
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-12 grid md:grid-cols-2 gap-6">
+          {PROD_LINES.map((p) => (
+            <figure
+              key={p.src}
+              className="relative aspect-[4/3] overflow-hidden rounded-[8px] bg-line"
+            >
+              <SmartImage
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </figure>
+          ))}
+        </div>
       </section>
 
-      <section className="border-y border-line">
-        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-16">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-8">
+      <section className="bg-paper-warm">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-16 lg:py-20">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-8">
             업계 리딩 생산기술력
           </p>
           <ul className="grid md:grid-cols-5 gap-x-6 gap-y-10">
             {CAPABILITIES.map((c) => (
               <li key={c.label}>
-                <p className="text-[20px] tracking-normal text-soil-brown mb-2">
+                <p className="text-[20px] font-semibold tracking-display text-ink-invert mb-2">
                   {c.label}
                 </p>
                 <p className="text-[12px] leading-[1.8] text-soil-brown-soft">
@@ -76,32 +80,36 @@ export default function FactoriesPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24">
-        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-8">
-          사옥
-        </p>
-        <div className="grid md:grid-cols-3 gap-6">
-          {COMPANIES.filter((c) => c.buildingImage).map((c) => (
-            <figure key={c.slug}>
-              <div className="relative aspect-[4/3] bg-line">
-                <SmartImage
-                  src={c.buildingImage!}
-                  alt={`${c.legalName} 사옥`}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="mt-4">
-                <p className="text-[20px] tracking-normal">{c.legalName}</p>
-                {c.address && (
-                  <p className="mt-1 text-[12px] text-soil-brown-soft">
-                    {c.address}
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-8">
+            사옥
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {COMPANIES.filter((c) => c.buildingImage).map((c) => (
+              <figure key={c.slug}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[8px] bg-line">
+                  <SmartImage
+                    src={c.buildingImage!}
+                    alt={`${c.legalName} 사옥`}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-4">
+                  <p className="text-[20px] font-semibold tracking-display text-ink-invert">
+                    {c.legalName}
                   </p>
-                )}
-              </figcaption>
-            </figure>
-          ))}
+                  {c.address && (
+                    <p className="mt-1 text-[12px] text-soil-brown-soft">
+                      {c.address}
+                    </p>
+                  )}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
     </article>

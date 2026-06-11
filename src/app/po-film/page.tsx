@@ -36,7 +36,7 @@ export default function PoFilmHub() {
   );
 
   return (
-    <>
+    <div className="flex flex-col gap-3 bg-paper-soft">
       <section className="overflow-hidden bg-white">
         <div className="mx-auto grid min-h-[72svh] max-w-[1600px] grid-cols-1 items-center gap-12 px-6 py-16 lg:grid-cols-12 lg:px-10 lg:py-20">
           <div className="lg:col-span-5">
@@ -86,7 +86,7 @@ export default function PoFilmHub() {
       </section>
 
       {/* 성장 실적 — 카운트업 통계 + 매출 그래프 */}
-      <section className="border-t border-line bg-paper-soft px-6 py-20 lg:px-10 lg:py-28">
+      <section className="bg-paper-warm px-6 py-20 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-[1600px]">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -115,7 +115,7 @@ export default function PoFilmHub() {
 
       <section
         id="premium"
-        className="border-y border-line bg-paper-warm px-6 py-20 lg:px-10 lg:py-28"
+        className="bg-white px-6 py-20 lg:px-10 lg:py-28"
       >
         <div className="mx-auto max-w-[1600px]">
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
@@ -166,7 +166,7 @@ export default function PoFilmHub() {
       {/* 새미테크 — 독자 특허 라인 */}
       <section
         id="saemitech"
-        className="border-t border-line bg-spring-blue/[0.05] px-6 py-20 lg:px-10 lg:py-28"
+        className="bg-spring-blue/[0.05] px-6 py-20 lg:px-10 lg:py-28"
       >
         <div className="mx-auto max-w-[1600px]">
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
@@ -192,7 +192,7 @@ export default function PoFilmHub() {
       </section>
 
       {/* 비교와 자료 */}
-      <section className="border-t border-line bg-white px-6 py-16 lg:px-10">
+      <section className="bg-white px-6 py-16 lg:px-10">
         <div className="mx-auto grid max-w-[1600px] gap-px border border-line bg-line md:grid-cols-4">
           {[
             { href: "/po-film/compare", title: "필름 비교", desc: "전 라인업 한 표로" },
@@ -212,6 +212,6 @@ export default function PoFilmHub() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -35,27 +35,29 @@ const LAB_SCOPE = [
 
 export default function QualityPage() {
   return (
-    <>
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-16">
-        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
-          Quality &amp; A/S
-        </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[18ch]">
-          한 번 씌우면 몇 년.
-          <br />
-          그래서 검사는 세 번.
-        </h1>
-        <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
-          필름은 한 시즌이 아니라 몇 년을 책임지는 자재입니다. 새미는 엄격한
-          품질관리 아래 필름 생산부터 사용까지 전 과정을 모니터링하고, 시공
-          이후의 문제까지 함께 해결합니다.
-        </p>
+    <div className="flex flex-col gap-3 bg-paper-soft">
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-20">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
+            Quality &amp; A/S
+          </p>
+          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[18ch]">
+            한 번 씌우면 몇 년.
+            <br />
+            그래서 검사는 세 번.
+          </h1>
+          <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
+            필름은 한 시즌이 아니라 몇 년을 책임지는 자재입니다. 새미는 엄격한
+            품질관리 아래 필름 생산부터 사용까지 전 과정을 모니터링하고, 시공
+            이후의 문제까지 함께 해결합니다.
+          </p>
+        </div>
       </section>
 
       {/* 3단계 검사 */}
-      <section className="border-y border-line bg-paper-soft">
-        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-10">
+      <section className="bg-paper-warm">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 lg:py-24">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-10">
             3단계 품질검사
           </p>
           <ol className="grid gap-px bg-line border border-line md:grid-cols-3">
@@ -75,40 +77,42 @@ export default function QualityPage() {
       </section>
 
       {/* 연구소 연계 */}
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
-            Research Lab
-          </p>
-          <h2 className="text-[28px] md:text-[36px] leading-[1.2]">
-            품질의 근거는
-            <br />
-            첨단기술 농업연구소.
-          </h2>
-          <Link
-            href="/about/research"
-            className="mt-8 inline-block link-underline text-[16px]"
-          >
-            농업연구소 자세히 →
-          </Link>
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5">
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
+              Research Lab
+            </p>
+            <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-display text-ink-invert">
+              품질의 근거는
+              <br />
+              첨단기술 농업연구소.
+            </h2>
+            <Link
+              href="/about/research"
+              className="mt-8 apple-button apple-button-secondary"
+            >
+              농업연구소 자세히
+            </Link>
+          </div>
+          <ul className="lg:col-span-6 lg:col-start-7 divide-y divide-line border-y border-line">
+            {LAB_SCOPE.map((item) => (
+              <li key={item} className="py-5 text-[16px] leading-relaxed text-soil-brown">
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="lg:col-span-6 lg:col-start-7 divide-y divide-line border-y border-line">
-          {LAB_SCOPE.map((item) => (
-            <li key={item} className="py-5 text-[16px] leading-relaxed text-soil-brown">
-              {item}
-            </li>
-          ))}
-        </ul>
       </section>
 
       {/* A/S */}
-      <section className="border-t border-line bg-paper-soft">
-        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid lg:grid-cols-12 gap-12">
+      <section className="bg-paper-warm">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-7">
-            <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
               After Service
             </p>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2]">
+            <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-display text-ink-invert">
               시공 후의 문제도
               <br />
               영업 담당이 직접 봅니다.
@@ -131,6 +135,6 @@ export default function QualityPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

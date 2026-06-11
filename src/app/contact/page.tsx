@@ -16,49 +16,59 @@ const CARDS = [
 
 export default function ContactHub() {
   return (
-    <article className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-32">
-      <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
-        Contact
-      </p>
-      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
-        문의하기
-      </h1>
-      <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
-        견적과 자료부터 채용·대리점, 그리고 카카오톡 AI 새미농박사까지 — 어떤
-        문의든 한 곳에서 시작합니다.
-      </p>
-
-      <ul className="mt-20 grid md:grid-cols-2 gap-px bg-line border border-line">
-        {CARDS.map((c) => (
-          <li key={c.href} className="bg-earth-beige p-10 lg:p-14">
-            <h2 className="text-[24px] mb-3">{c.title}</h2>
-            <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch] mb-6">
-              {c.body}
-            </p>
-            <Link href={c.href} className="link-underline text-[16px]">
-              {c.title} →
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <section className="mt-24 grid md:grid-cols-3 gap-12 text-[16px] leading-[1.85] text-soil-brown-soft">
-        <div>
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">본사</p>
-          <p>경상남도 양산시 산막공단 남10길 10</p>
-          <p>T 055-781-1250 / F 055-781-1251</p>
-          <p>sae-mi@saemigroup.com</p>
-        </div>
-        <div>
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">JIS</p>
-          <p>경남 양산시 상북면 석계산단4길 66</p>
-          <p>T 055-723-2500</p>
-        </div>
-        <div>
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">더한농</p>
-          <p>충북 충주시 용탄농공1길 31</p>
+    <div className="flex flex-col gap-3 bg-paper-soft">
+      <section className="overflow-hidden bg-white">
+        <div className="mx-auto max-w-[1600px] px-6 pb-20 pt-28 lg:px-10 lg:pt-36">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue">
+            Contact
+          </p>
+          <h1 className="mt-5 max-w-[16ch] text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert">
+            문의하기
+          </h1>
+          <p className="mt-7 max-w-[60ch] text-[20px] leading-relaxed text-soil-brown-soft">
+            견적과 자료부터 채용·대리점, 그리고 카카오톡 AI 새미농박사까지 — 어떤
+            문의든 한 곳에서 시작합니다.
+          </p>
         </div>
       </section>
-    </article>
+
+      <section className="bg-paper-warm">
+        <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-10 lg:py-24">
+          <ul className="grid md:grid-cols-2 gap-px bg-line border border-line">
+            {CARDS.map((c) => (
+              <li key={c.href} className="bg-white p-10 lg:p-14">
+                <h2 className="text-[24px] font-semibold tracking-display text-ink-invert mb-3">{c.title}</h2>
+                <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch] mb-6">
+                  {c.body}
+                </p>
+                <Link href={c.href} className="link-underline text-[16px]">
+                  {c.title} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1600px] grid md:grid-cols-3 gap-12 px-6 py-20 lg:px-10 lg:py-24 text-[16px] leading-[1.85] text-soil-brown-soft">
+          <div>
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-3">본사</p>
+            <p>경상남도 양산시 산막공단 남10길 10</p>
+            <p>T 055-781-1250 / F 055-781-1251</p>
+            <p>sae-mi@saemigroup.com</p>
+          </div>
+          <div>
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-3">JIS</p>
+            <p>경남 양산시 상북면 석계산단4길 66</p>
+            <p>T 055-723-2500</p>
+          </div>
+          <div>
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-3">더한농</p>
+            <p>충북 충주시 용탄농공1길 31</p>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -11,42 +11,46 @@ export const metadata: Metadata = {
 
 export default function PartsPage() {
   return (
-    <>
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-16">
-        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
-          Precision Parts
-        </p>
-        <h1 className="text-[36px] md:text-[48px] lg:text-[64px] leading-[1.1] max-w-[16ch]">
-          정밀 기계 부품
-        </h1>
-        <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
-          약 30년간 일본 굴지의 기업들과 지속적으로 거래하며 축적한 전문
-          지식과 네트워크로, 조선·건설·농업·산업 4개 분야의 핵심 부품을
-          공급합니다.
-        </p>
-        {/* 분야 점프 */}
-        <nav aria-label="분야 바로가기" className="mt-10 flex flex-wrap gap-3">
-          {MACHINERY_SECTORS.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="rounded-full border border-line bg-white px-5 py-2 text-[14px] text-soil-brown transition-colors hover:border-spring-blue hover:text-spring-blue"
-            >
-              {s.title}
-            </a>
-          ))}
-        </nav>
+    <div className="flex flex-col gap-3 bg-paper-soft">
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-20">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
+            Precision Parts
+          </p>
+          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[16ch]">
+            정밀 기계 부품
+          </h1>
+          <p className="mt-8 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown-soft">
+            약 30년간 일본 굴지의 기업들과 지속적으로 거래하며 축적한 전문
+            지식과 네트워크로, 조선·건설·농업·산업 4개 분야의 핵심 부품을
+            공급합니다.
+          </p>
+          {/* 분야 점프 */}
+          <nav aria-label="분야 바로가기" className="mt-10 flex flex-wrap gap-3">
+            {MACHINERY_SECTORS.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="rounded-full border border-line bg-white px-5 py-2 text-[14px] text-soil-brown transition-colors hover:border-spring-blue hover:text-spring-blue"
+              >
+                {s.title}
+              </a>
+            ))}
+          </nav>
+        </div>
       </section>
 
       {MACHINERY_SECTORS.map((s, i) => (
         <section
           key={s.id}
           id={s.id}
-          className={i % 2 === 1 ? "border-y border-line bg-paper-soft" : ""}
+          className={i % 2 === 1 ? "bg-paper-warm" : "bg-white"}
         >
-          <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20">
+          <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 lg:py-24">
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <h2 className="text-[28px] md:text-[36px]">{s.title}</h2>
+              <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-display text-ink-invert">
+                {s.title}
+              </h2>
               <p className="text-[14px] text-soil-brown-mute">{s.desc}</p>
             </div>
             <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
@@ -71,10 +75,14 @@ export default function PartsPage() {
         </section>
       ))}
 
-      <section className="border-t border-line bg-paper-soft text-ink-invert">
-        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-7">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] leading-[1.2]">
+      {/* CTA — 홈 CONTACT 섹션과 같은 패턴 */}
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-24 lg:grid-cols-12 lg:px-10 lg:py-32">
+          <div className="lg:col-span-8">
+            <p className="font-tech text-[12px] font-semibold text-spring-blue">
+              CONTACT
+            </p>
+            <h2 className="mt-4 max-w-[18ch] text-[36px] md:text-[56px] lg:text-[72px] font-semibold leading-[1.08] tracking-display text-ink-invert">
               필요한 부품의 사양과 수량을 알려주세요.
             </h2>
             <p className="mt-6 max-w-[44ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -82,18 +90,16 @@ export default function PartsPage() {
               연락드립니다.
             </p>
           </div>
-          <div className="lg:col-span-5 self-end">
-            <div className="flex flex-wrap gap-8 text-[16px]">
-              <Link href="/contact/quote" className="text-spring-blue hover:opacity-80">
-                견적 문의 →
-              </Link>
-              <Link href="/machinery/yaskawa" className="text-soil-brown-soft hover:text-spring-blue">
-                YASKAWA 로봇 보기
-              </Link>
-            </div>
+          <div className="flex flex-col justify-end gap-3 lg:col-span-3 lg:col-start-10">
+            <Link href="/machinery/yaskawa" className="apple-button apple-button-secondary">
+              YASKAWA 로봇 보기
+            </Link>
+            <Link href="/contact/quote" className="apple-button apple-button-primary">
+              견적 문의
+            </Link>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -67,22 +67,24 @@ export default function AboutPage() {
   const milestones = HISTORY.filter((h) => MILESTONE_YEARS.includes(h.year));
 
   return (
-    <>
+    <div className="flex flex-col gap-3 bg-paper-soft">
       {/* 1. 히어로 */}
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-24 lg:pt-40 lg:pb-32">
-        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
-          Saemi Group
-        </p>
-        <h1 className="text-[40px] md:text-[64px] xl:text-[80px] leading-[1.05] max-w-[18ch] text-balance">
-          프리미엄 종합농자재,
-          <br />
-          새미그룹.
-        </h1>
-        <p className="mt-8 max-w-[60ch] text-[18px] md:text-[20px] leading-[1.75] text-soil-brown-soft">
-          농사를 준비하는 필름부터, 작물을 지키는 보호제, 현장을 움직이는
-          기계, 수확을 잇는 유통까지 — 4개의 회사가 농업의 전 과정을
-          받칩니다.
-        </p>
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-24 lg:pt-40 lg:pb-32">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
+            Saemi Group
+          </p>
+          <h1 className="text-[40px] md:text-[64px] xl:text-[80px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[18ch] text-balance">
+            프리미엄 종합농자재,
+            <br />
+            새미그룹.
+          </h1>
+          <p className="mt-8 max-w-[60ch] text-[18px] md:text-[20px] leading-[1.75] text-soil-brown-soft">
+            농사를 준비하는 필름부터, 작물을 지키는 보호제, 현장을 움직이는
+            기계, 수확을 잇는 유통까지 — 4개의 회사가 농업의 전 과정을
+            받칩니다.
+          </p>
+        </div>
       </section>
 
       {/* 2. 기업철학 — 경천애인 (다크 섹션) */}
@@ -109,49 +111,51 @@ export default function AboutPage() {
       </section>
 
       {/* 3. CEO 인사말 */}
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-7">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
-            CEO Message
-          </p>
-          <h2 className="text-[32px] md:text-[44px] leading-[1.2]">
-            대표이사 인사말
-          </h2>
-          <div className="mt-10 max-w-[58ch] space-y-7 text-[16px] leading-[1.9] text-soil-brown">
-            {CEO_PARAGRAPHS.map((p) => (
-              <p key={p.slice(0, 12)}>{p}</p>
-            ))}
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-7">
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
+              CEO Message
+            </p>
+            <h2 className="text-[32px] md:text-[44px] font-semibold leading-[1.2] tracking-display text-ink-invert">
+              대표이사 인사말
+            </h2>
+            <div className="mt-10 max-w-[58ch] space-y-7 text-[16px] leading-[1.9] text-soil-brown">
+              {CEO_PARAGRAPHS.map((p) => (
+                <p key={p.slice(0, 12)}>{p}</p>
+              ))}
+            </div>
+            <Link
+              href="/about/ceo"
+              className="mt-10 apple-button apple-button-secondary"
+            >
+              인사말 전문 보기
+            </Link>
           </div>
-          <Link
-            href="/about/ceo"
-            className="mt-10 inline-block link-underline text-[16px]"
-          >
-            인사말 전문 보기 →
-          </Link>
-        </div>
-        <div className="lg:col-span-4 lg:col-start-9">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-[8px] bg-paper-soft">
-            <SmartImage
-              src="design-assets/ceo-portrait.webp"
-              alt="새미그룹 대표이사 정두석"
-              fill
-              sizes="(min-width: 1024px) 33vw, 100vw"
-              className="object-cover"
-            />
+          <div className="lg:col-span-4 lg:col-start-9">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-[8px] bg-paper-soft">
+              <SmartImage
+                src="design-assets/ceo-portrait.webp"
+                alt="새미그룹 대표이사 정두석"
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-4 text-[14px] text-soil-brown-mute">
+              대표이사 <span className="text-soil-brown">정두석</span>
+            </p>
           </div>
-          <p className="mt-4 text-[14px] text-soil-brown-mute">
-            대표이사 <span className="text-soil-brown">정두석</span>
-          </p>
         </div>
       </section>
 
       {/* 4. 4개의 회사 */}
-      <section className="border-y border-line bg-paper-soft">
+      <section className="bg-paper-warm">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
             Companies
           </p>
-          <h2 className="text-[32px] md:text-[44px] leading-[1.2] max-w-[20ch]">
+          <h2 className="text-[32px] md:text-[44px] font-semibold leading-[1.2] tracking-display text-ink-invert max-w-[20ch]">
             프리미엄 종합 농자재, 4개의 회사
           </h2>
           <p className="mt-6 max-w-[58ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -200,69 +204,71 @@ export default function AboutPage() {
           </div>
           <Link
             href="/about/companies"
-            className="mt-10 inline-block link-underline text-[16px]"
+            className="mt-10 apple-button apple-button-secondary"
           >
-            회사별 자세히 보기 →
+            회사별 자세히 보기
           </Link>
         </div>
       </section>
 
       {/* 5. 4개 사업부 — 홈에서 이전한 이미지 카드 섹션 */}
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
-        <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
-          Business
-        </p>
-        <h2 className="text-[32px] md:text-[44px] leading-[1.2] max-w-[20ch]">
-          농업 전반을 아우르는 4개의 핵심 사업부
-        </h2>
-        <p className="mt-6 max-w-[58ch] text-[16px] leading-[1.85] text-soil-brown-soft">
-          새미그룹은 농업 전반에 걸친 다양한 농업경영인들의 필요를 적시에
-          충족시키고, 최고의 품질과 가치를 제공하기 위해 4개의 농산업 특화
-          기업을 운영하고 있습니다.
-        </p>
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
+            Business
+          </p>
+          <h2 className="text-[32px] md:text-[44px] font-semibold leading-[1.2] tracking-display text-ink-invert max-w-[20ch]">
+            농업 전반을 아우르는 4개의 핵심 사업부
+          </h2>
+          <p className="mt-6 max-w-[58ch] text-[16px] leading-[1.85] text-soil-brown-soft">
+            새미그룹은 농업 전반에 걸친 다양한 농업경영인들의 필요를 적시에
+            충족시키고, 최고의 품질과 가치를 제공하기 위해 4개의 농산업 특화
+            기업을 운영하고 있습니다.
+          </p>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {DIVISIONS.map((division) => (
-            <Link
-              key={division.href}
-              href={division.href}
-              className="group surface-panel overflow-hidden bg-white transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-paper-soft">
-                <SmartImage
-                  src={division.image}
-                  alt={`${division.title} 제품 이미지`}
-                  fill
-                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-                />
-              </div>
-              <div className="p-6">
-                <p className="font-tech text-[12px] font-semibold text-spring-blue">
-                  {division.id}
-                </p>
-                <h3 className="mt-3 text-[22px] leading-tight">
-                  {division.title}
-                </h3>
-                <p className="mt-3 min-h-[4.5rem] text-[15px] leading-relaxed text-soil-brown-soft">
-                  {division.body}
-                </p>
-                <span className="mt-4 inline-block text-[14px] text-spring-blue opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                  {division.title} 보기 →
-                </span>
-              </div>
-            </Link>
-          ))}
+          <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {DIVISIONS.map((division) => (
+              <Link
+                key={division.href}
+                href={division.href}
+                className="group surface-panel overflow-hidden bg-white transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-paper-soft">
+                  <SmartImage
+                    src={division.image}
+                    alt={`${division.title} 제품 이미지`}
+                    fill
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="font-tech text-[12px] font-semibold text-spring-blue">
+                    {division.id}
+                  </p>
+                  <h3 className="mt-3 text-[22px] leading-tight">
+                    {division.title}
+                  </h3>
+                  <p className="mt-3 min-h-[4.5rem] text-[15px] leading-relaxed text-soil-brown-soft">
+                    {division.body}
+                  </p>
+                  <span className="mt-4 inline-block text-[14px] text-spring-blue opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {division.title} 보기 →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* 6. 성장 — 그래프 + 통계 */}
-      <section className="border-y border-line bg-paper-soft">
+      <section className="bg-paper-warm">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
             Performance
           </p>
-          <h2 className="text-[32px] md:text-[44px] leading-[1.2] max-w-[20ch]">
+          <h2 className="text-[32px] md:text-[44px] font-semibold leading-[1.2] tracking-display text-ink-invert max-w-[20ch]">
             지속적인 성장, 새미 PO필름
           </h2>
           <p className="mt-6 max-w-[58ch] text-[16px] leading-[1.85] text-soil-brown-soft">
@@ -279,41 +285,43 @@ export default function AboutPage() {
       </section>
 
       {/* 7. 연혁 하이라이트 */}
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
-            <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-4">
-              History
-            </p>
-            <h2 className="text-[32px] md:text-[44px] leading-[1.2]">
-              2003년부터,
-              <br />
-              한 해도 멈추지 않고.
-            </h2>
-            <Link
-              href="/about/history"
-              className="mt-8 inline-block link-underline text-[16px]"
-            >
-              전체 연혁 보기 →
-            </Link>
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-4">
+                History
+              </p>
+              <h2 className="text-[32px] md:text-[44px] font-semibold leading-[1.2] tracking-display text-ink-invert">
+                2003년부터,
+                <br />
+                한 해도 멈추지 않고.
+              </h2>
+              <Link
+                href="/about/history"
+                className="mt-8 apple-button apple-button-secondary"
+              >
+                전체 연혁 보기
+              </Link>
+            </div>
+            <ol className="lg:col-span-7 lg:col-start-6 divide-y divide-line border-y border-line">
+              {milestones.map((m) => (
+                <li key={m.year} className="grid grid-cols-[96px_1fr] gap-6 py-6">
+                  <span className="font-tech text-[20px] font-semibold text-ink-invert">
+                    {m.year}
+                  </span>
+                  <span className="text-[16px] leading-relaxed text-soil-brown">
+                    {m.highlights.join(" · ")}
+                  </span>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ol className="lg:col-span-7 lg:col-start-6 divide-y divide-line border-y border-line">
-            {milestones.map((m) => (
-              <li key={m.year} className="grid grid-cols-[96px_1fr] gap-6 py-6">
-                <span className="font-tech text-[20px] font-semibold text-ink-invert">
-                  {m.year}
-                </span>
-                <span className="text-[16px] leading-relaxed text-soil-brown">
-                  {m.highlights.join(" · ")}
-                </span>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
       {/* 8. 더 보기 */}
-      <section className="border-t border-line bg-paper-soft">
+      <section className="bg-paper-warm">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20 grid md:grid-cols-3 gap-px bg-line border border-line">
           {[
             {
@@ -344,6 +352,6 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

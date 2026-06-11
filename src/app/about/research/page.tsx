@@ -39,7 +39,7 @@ const STAT = [
 
 export default function ResearchPage() {
   return (
-    <article>
+    <article className="flex flex-col gap-3 bg-paper-soft">
       <section className="relative h-[60vh] min-h-[480px] flex items-end overflow-hidden">
         <SmartImage
           src="company/research/hero/interior-01.webp"
@@ -51,31 +51,33 @@ export default function ResearchPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-earth-beige via-earth-beige/80 via-40% to-earth-beige/0" />
         <div className="relative mx-auto max-w-[1440px] w-full px-6 lg:px-10 pb-16">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
             Agricultural Research Lab
           </p>
-          <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[16ch]">
+          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[16ch]">
             농업연구소
           </h1>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-3">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute">
-            소개
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-3">
+            <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue">
+              소개
+            </p>
+          </div>
+          <p className="lg:col-span-8 lg:col-start-5 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown">
+            ARTS 농업연구소(2020 설립)는 PO필름의 물리·광학 특성을 측정할 수 있는
+            16종 이상의 장비를 갖추고 있습니다. 한국 농업의 기상과 작목 데이터를
+            지속 모니터링하면서, 정밀한 데이터에 근거해 신제품을 개발하고 품질을
+            관리합니다.
           </p>
         </div>
-        <p className="lg:col-span-8 lg:col-start-5 max-w-[60ch] text-[16px] leading-[1.85] text-soil-brown">
-          ARTS 농업연구소(2020 설립)는 PO필름의 물리·광학 특성을 측정할 수 있는
-          16종 이상의 장비를 갖추고 있습니다. 한국 농업의 기상과 작목 데이터를
-          지속 모니터링하면서, 정밀한 데이터에 근거해 신제품을 개발하고 품질을
-          관리합니다.
-        </p>
       </section>
 
-      <section className="border-y border-line">
-        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-16 grid md:grid-cols-3">
+      <section className="bg-paper-warm">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-16 lg:py-20 grid md:grid-cols-3">
           {STAT.map((s, i) => (
             <div
               key={s.label}
@@ -83,10 +85,10 @@ export default function ResearchPage() {
                 i > 0 ? "md:border-l border-line" : ""
               }`}
             >
-              <p className="text-[40px] md:text-[56px] lg:text-[72px] leading-none tracking-normal text-soil-brown">
+              <p className="font-tech text-[40px] md:text-[56px] lg:text-[72px] font-semibold leading-none tracking-display text-ink-invert">
                 {s.value}
               </p>
-              <p className="mt-3 text-[12px] tracking-normal uppercase text-soil-brown-mute">
+              <p className="mt-3 font-tech text-[12px] uppercase text-soil-brown-mute">
                 {s.label}
               </p>
             </div>
@@ -94,32 +96,36 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24">
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
-          {PILLARS.map((p) => (
-            <article key={p.eyebrow} className="border-t border-line pt-6">
-              <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-3">
-                Pillar · {p.eyebrow}
-              </p>
-              <h3 className="text-[24px] mb-3">
-                {p.title}
-              </h3>
-              <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch]">
-                {p.body}
-              </p>
-            </article>
-          ))}
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24">
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+            {PILLARS.map((p) => (
+              <article key={p.eyebrow} className="border-t border-line pt-6">
+                <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-3">
+                  Pillar · {p.eyebrow}
+                </p>
+                <h3 className="text-[24px] font-semibold tracking-display text-ink-invert mb-3">
+                  {p.title}
+                </h3>
+                <p className="text-[16px] leading-[1.85] text-soil-brown-soft max-w-[44ch]">
+                  {p.body}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-10 pb-24">
-        <div className="flex flex-wrap gap-8 text-[16px]">
-          <Link href="/po-film" className="link-underline">
-            연구소가 만든 라인업 →
-          </Link>
-          <Link href="/about/factories" className="link-underline">
-            공장·사옥 →
-          </Link>
+      <section className="bg-paper-warm">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-20">
+          <div className="flex flex-wrap gap-3">
+            <Link href="/po-film" className="apple-button apple-button-primary">
+              연구소가 만든 라인업
+            </Link>
+            <Link href="/about/factories" className="apple-button apple-button-secondary">
+              공장·사옥
+            </Link>
+          </div>
         </div>
       </section>
     </article>

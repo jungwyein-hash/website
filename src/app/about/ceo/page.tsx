@@ -17,41 +17,45 @@ const PARAGRAPHS = [
 
 export default function CeoPage() {
   return (
-    <article data-mode="premium" className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-32">
-      <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-6">
-        CEO Message
-      </p>
-      <h1 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] max-w-[16ch]">
-        대표 인사말
-      </h1>
-      <div className="mt-16 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-3">
-          <p className="text-[12px] tracking-normal uppercase text-soil-brown-mute mb-2">
-            敬天愛人
+    <div className="flex flex-col gap-3 bg-paper-soft">
+      <article data-mode="premium" className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-32">
+          <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
+            CEO Message
           </p>
-          <p className="text-[16px] text-soil-brown-soft">
-            하늘을 공경하고
-            <br />
-            사람을 사랑한다.
-          </p>
+          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[16ch]">
+            대표 인사말
+          </h1>
+          <div className="mt-16 grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-3">
+              <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-2">
+                敬天愛人
+              </p>
+              <p className="text-[16px] text-soil-brown-soft">
+                하늘을 공경하고
+                <br />
+                사람을 사랑한다.
+              </p>
+            </div>
+            <div className="lg:col-span-8 lg:col-start-5 max-w-[60ch] space-y-7 text-[16px] leading-[1.95] text-soil-brown">
+              {PARAGRAPHS.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+              <p className="pt-6 text-[16px] text-soil-brown-soft">
+                대표이사 <span className="text-soil-brown">정두석</span>
+              </p>
+            </div>
+          </div>
+          <div className="mt-24 flex flex-wrap gap-3">
+            <Link href="/about/companies" className="apple-button apple-button-secondary">
+              4개의 회사
+            </Link>
+            <Link href="/about/history" className="apple-button apple-button-secondary">
+              연혁 (2003~)
+            </Link>
+          </div>
         </div>
-        <div className="lg:col-span-8 lg:col-start-5 max-w-[60ch] space-y-7 text-[16px] leading-[1.95] text-soil-brown">
-          {PARAGRAPHS.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-          <p className="pt-6 text-[16px] text-soil-brown-soft">
-            대표이사 <span className="text-soil-brown">정두석</span>
-          </p>
-        </div>
-      </div>
-      <div className="mt-24 flex flex-wrap gap-8 text-[16px]">
-        <Link href="/about/companies" className="link-underline">
-          4개의 회사 →
-        </Link>
-        <Link href="/about/history" className="link-underline">
-          연혁 (2003~) →
-        </Link>
-      </div>
-    </article>
+      </article>
+    </div>
   );
 }
