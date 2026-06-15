@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/companies",
     "/about/history",
     "/about/research",
-    "/about/factories",
+    "/about/production",
     "/about/partners",
     "/po-film",
     "/po-film/compare",

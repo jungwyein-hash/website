@@ -100,11 +100,14 @@ export default function PoFilmHub() {
               </h2>
               <p className="mt-6 max-w-[40ch] text-[16px] leading-relaxed text-soil-brown-soft">
                 검증된 품질과 고객 신뢰를 바탕으로 매년 꾸준한 성장을 이어가고
-                있습니다. 연간 판매량 기준입니다.
+                있습니다.
               </p>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
               <BarChart bars={PO_FILM_SALES} />
+              <p className="mt-6 text-[12px] text-soil-brown-mute">
+                * 2021년 판매량 대비 성장률
+              </p>
             </div>
           </div>
           <div className="mt-20 border-t border-line pt-14">

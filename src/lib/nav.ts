@@ -4,6 +4,8 @@ export type MegaItem = {
   /** 제품명 옆 태그 — 분류(투명·산란 등)와 배지(1위 등). 복수 가능 */
   caption?: string | string[];
   children?: MegaItem[];
+  /** 패널이 열릴 때 하위 목록을 기본으로 펼쳐둠 */
+  defaultExpanded?: boolean;
 };
 
 export type MegaGroup = {
@@ -29,26 +31,38 @@ export type NavSection = {
 
 export const NAV: NavSection[] = [
   {
-    label: "회사 소개",
+    label: "새미그룹",
     href: "/about",
     groups: [
       {
         title: "새미그룹",
         items: [
-          { label: "한눈에 보기", href: "/about", caption: "철학·사업부" },
-          { label: "대표 인사말", href: "/about/ceo" },
-          { label: "4개의 회사", href: "/about/companies" },
-          { label: "연혁", href: "/about/history", caption: "2003~" },
-          { label: "소식", href: "/news" },
-          { label: "기존 홈", href: "/home-backup", caption: "백업" },
+          {
+            label: "회사 소개",
+            href: "/about",
+            defaultExpanded: true,
+            children: [
+              { label: "기업철학", href: "/about#philosophy" },
+              { label: "4개의 회사", href: "/about#companies" },
+              { label: "사업부", href: "/about#business" },
+              { label: "연혁", href: "/about#history", caption: "2003~" },
+              { label: "글로벌 파트너", href: "/about#partners" },
+            ],
+          },
         ],
       },
       {
-        title: "역량과 현장",
+        title: "기술력",
         items: [
           { label: "농업연구소", href: "/about/research" },
-          { label: "공장과 시설", href: "/about/factories" },
-          { label: "글로벌 파트너", href: "/about/partners" },
+          { label: "생산기술력", href: "/about/production" },
+        ],
+      },
+      {
+        title: "소통",
+        items: [
+          { label: "소식", href: "/news" },
+          { label: "새미농박사", href: "/contact/saemi-nongbaksa" },
         ],
       },
       {

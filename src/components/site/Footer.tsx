@@ -16,7 +16,7 @@ const COLUMNS = [
       { label: "새미그룹 소개", href: "/about" },
       { label: "계열 회사", href: "/about/companies" },
       { label: "연혁", href: "/about/history" },
-      { label: "협력 회사", href: "/about/partners" },
+      { label: "글로벌 파트너", href: "/about#partners" },
       { label: "농업연구소", href: "/about/research" },
     ],
   },

@@ -57,7 +57,9 @@ export default function StatStrip({ stats }: { stats: Stat[] }) {
   return (
     <div
       ref={ref}
-      className="grid grid-cols-2 gap-y-10 md:grid-cols-4 md:gap-y-0"
+      className={`grid grid-cols-2 gap-y-10 md:gap-y-0 ${
+        stats.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"
+      }`}
     >
       {stats.map((s, i) => {
         const start = s.startFrom ?? 0;
@@ -68,11 +70,11 @@ export default function StatStrip({ stats }: { stats: Stat[] }) {
             className={`text-center ${i > 0 ? "md:border-l md:border-line" : ""}`}
           >
             <p
-              className={`font-tech text-[44px] md:text-[56px] font-semibold leading-none tracking-display ${
+              className={`text-[44px] md:text-[56px] font-semibold leading-none tracking-display ${
                 s.highlight ? "text-spring-blue" : "text-ink-invert"
               }`}
             >
-              {current.toLocaleString()}
+              <span className="font-tech">{current.toLocaleString()}</span>
               {s.suffix && (
                 <span className="ml-1 text-[22px] md:text-[26px] align-baseline">
                   {s.suffix}
