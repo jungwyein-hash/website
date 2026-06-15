@@ -89,7 +89,7 @@ export const COMPANIES: Company[] = [
       "품질 연구 및 신제품 개발",
     ],
     partners: [],
-    buildingImage: "products/po-film/standard/coating-plus/hero/exterior-02.webp",
+    buildingImage: "design-assets/web/nationwide-dealers-03.webp",
   },
   {
     slug: "thehannong",

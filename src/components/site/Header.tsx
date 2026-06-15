@@ -47,10 +47,19 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // defaultExpanded 시리즈(회사 소개 등)는 패널이 열릴 때부터 펼쳐둔다
+  const seedExpanded = (i: number) =>
+    new Set(
+      (NAV[i].groups ?? [])
+        .flatMap((g) => [...g.items, ...(g.more?.flatMap((s) => s.items) ?? [])])
+        .filter((it) => it.children?.length && it.defaultExpanded)
+        .map((it) => it.href)
+    );
+
   const open = (i: number) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenIndex((prev) => {
-      if (prev !== i) setExpandedSeries(new Set());
+      if (prev !== i) setExpandedSeries(seedExpanded(i));
       return i;
     });
   };
@@ -118,15 +127,16 @@ export default function Header() {
                 </Link>
               </div>
             ))}
-          </nav>
-
-          <div className="flex items-center gap-5">
             <Link
               href="/best-farms"
-              className="hidden text-[12px] leading-none text-ink-invert/76 transition-colors duration-200 hover:text-spring-blue lg:inline-block"
+              className="py-5 transition-colors duration-200 hover:text-spring-blue"
+              onMouseEnter={() => setOpenIndex(null)}
             >
               우수농가
             </Link>
+          </nav>
+
+          <div className="flex items-center gap-5">
             <Link
               href="/contact/quote"
               className="hidden text-[12px] font-semibold leading-none text-spring-blue transition-opacity hover:opacity-75 lg:inline-block"
@@ -192,38 +202,37 @@ export default function Header() {
                             hasChildren ? () => expandSeries(it.href) : undefined
                           }
                         >
-                          {hasChildren ? (
-                            <button
-                              type="button"
-                              onClick={() => toggleSeries(it.href)}
-                              aria-expanded={isExpanded}
-                              className="inline-flex items-center gap-2 text-[16px] font-semibold leading-tight text-ink-invert transition-colors hover:text-spring-blue"
-                            >
-                              <span>{it.label}</span>
-                              <Tags caption={it.caption} />
+                          <Link
+                            href={it.href}
+                            aria-expanded={hasChildren ? isExpanded : undefined}
+                            className="inline-flex items-center gap-2 text-[16px] font-semibold leading-tight text-ink-invert transition-colors hover:text-spring-blue"
+                          >
+                            <span>{it.label}</span>
+                            <Tags caption={it.caption} />
+                            {hasChildren && (
                               <span
                                 aria-hidden
-                                className={`text-[11px] text-soil-brown-mute transition-transform duration-200 ${
-                                  isExpanded ? "rotate-180" : ""
+                                onClick={(e) => {
+                                  // 화살표 클릭은 이동 대신 접기/펴기
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  toggleSeries(it.href);
+                                }}
+                                className={`text-[11px] text-soil-brown-mute ${
+                                  isExpanded ? "" : "rotate-180"
                                 }`}
                               >
                                 ▾
                               </span>
-                            </button>
-                          ) : (
-                            <Link
-                              href={it.href}
-                              className="inline-flex items-center gap-2 text-[16px] font-semibold leading-tight text-ink-invert transition-colors hover:text-spring-blue"
-                            >
-                              <span>{it.label}</span>
-                              <Tags caption={it.caption} />
-                            </Link>
-                          )}
+                            )}
+                          </Link>
                           {hasChildren && (
                             <ul
                               className={`space-y-2 overflow-hidden border-l border-line pl-4 transition-all duration-300 ease-out ${
                                 isExpanded
-                                  ? "mt-3 max-h-44 opacity-100"
+                                  ? `mt-3 opacity-100 ${
+                                      it.children!.length > 5 ? "max-h-72" : "max-h-44"
+                                    }`
                                   : "mt-0 max-h-0 opacity-0"
                               }`}
                             >

@@ -92,8 +92,8 @@ export default function CompaniesPage() {
             <Link href="/about/history" className="apple-button apple-button-secondary">
               연혁
             </Link>
-            <Link href="/about/factories" className="apple-button apple-button-secondary">
-              공장·사옥
+            <Link href="/about/production" className="apple-button apple-button-secondary">
+              생산기술력
             </Link>
             <Link href="/about/partners" className="apple-button apple-button-secondary">
               글로벌 파트너

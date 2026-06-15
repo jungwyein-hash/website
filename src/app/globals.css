@@ -107,9 +107,28 @@ body {
   font-family: var(--font-serif);
 }
 
+/* 스펙 텍스트용 — 숫자(0-9, 쉼표·소수점)만 Consolas, 한글·영문은 Pretendard로 폴백 */
+@font-face {
+  font-family: "TechNum";
+  src: local("Consolas"), local("SFMono-Regular"), local("Menlo");
+  font-display: swap;
+  unicode-range: U+0030-0039, U+002C, U+002E;
+}
 .font-tech {
-  font-family: var(--font-mono);
+  font-family: "TechNum", var(--font-sans);
   font-variant-numeric: tabular-nums;
+}
+
+/* 경천애인 한자 전용 붓글씨체 — 敬天愛人 4자만 서브셋 */
+@font-face {
+  font-family: "ZiHunKaiShu";
+  src: url("/fonts/zihun-kaishu-hanja.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.font-hanja {
+  font-family: "ZiHunKaiShu", var(--font-serif);
 }
 
 .premium-surface {

@@ -58,15 +58,17 @@ export default function BarChart({
       {bars.map((b, i) => (
         <div key={b.label} className="flex h-full flex-1 flex-col justify-end">
           <p
-            className={`mb-2 text-center font-tech text-[13px] md:text-[15px] font-semibold ${
+            className={`mb-2 text-center font-tech text-[16px] md:text-[20px] font-semibold ${
               b.highlight ? "text-spring-blue" : "text-soil-brown"
             }`}
           >
             {b.display}
           </p>
           <div
-            className={`w-full rounded-t-[6px] ${
-              b.highlight ? "bg-spring-blue" : "bg-ink-invert/[0.12]"
+            className={`w-full rounded-t-[6px] bg-gradient-to-b ${
+              b.highlight
+                ? "from-spring-blue to-spring-blue/85"
+                : "from-ink-invert/[0.14] to-ink-invert/[0.08]"
             }`}
             style={{
               // 라벨 영역(~22%)을 제외한 높이로 스케일 — 모든 막대 동일 배율이라 비율 유지

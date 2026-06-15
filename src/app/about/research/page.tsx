@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import SmartImage from "@/components/media/SmartImage";
+import ImageCarousel from "@/components/media/ImageCarousel";
+import HeroVideoBg from "@/components/product/HeroVideoBg";
+import { r2Url } from "@/lib/r2-image";
 
 export const metadata: Metadata = {
   title: "농업연구소",
@@ -37,26 +40,31 @@ const STAT = [
   { value: "8종", label: "광학 특성" },
 ];
 
+const LAB_PHOTOS = [
+  { key: "company/research/hero/interior-01.webp", alt: "새미 농업연구소 내부 01" },
+  { key: "company/research/hero/interior-02.webp", alt: "새미 농업연구소 내부 02" },
+  { key: "company/research/hero/interior-03.webp", alt: "새미 농업연구소 내부 03" },
+  { key: "company/research/hero/interior-04.webp", alt: "새미 농업연구소 내부 04" },
+  { key: "company/research/hero/interior-05.webp", alt: "새미 농업연구소 내부 05" },
+].map((p) => ({ src: r2Url(p.key), alt: p.alt }));
+
 export default function ResearchPage() {
   return (
     <article className="flex flex-col gap-3 bg-paper-soft">
-      <section className="relative h-[60vh] min-h-[480px] flex items-end overflow-hidden">
-        <SmartImage
-          src="company/research/hero/interior-01.webp"
-          alt="새미 농업연구소"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-earth-beige via-earth-beige/80 via-40% to-earth-beige/0" />
-        <div className="relative mx-auto max-w-[1440px] w-full px-6 lg:px-10 pb-16">
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-32 pb-16">
           <p className="font-tech text-[12px] font-semibold uppercase text-spring-blue mb-6">
             Agricultural Research Lab
           </p>
           <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] tracking-display text-ink-invert max-w-[16ch]">
             농업연구소
           </h1>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="relative aspect-[3840/1300] w-full overflow-hidden bg-line">
+          <HeroVideoBg src={r2Url("company/research/video/Lab-intro-KR.mp4")} />
         </div>
       </section>
 
@@ -98,6 +106,16 @@ export default function ResearchPage() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-24">
+          <figure className="mb-16">
+            <SmartImage
+              src="design-assets/web/saemi-standard-film-production-framework.webp"
+              alt="새미 표준 필름 생산 프레임워크"
+              width={2048}
+              height={1448}
+              sizes="(min-width: 1024px) 1000px, 100vw"
+              className="mx-auto h-auto w-full max-w-[1000px]"
+            />
+          </figure>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
             {PILLARS.map((p) => (
               <article key={p.eyebrow} className="border-t border-line pt-6">
@@ -113,6 +131,9 @@ export default function ResearchPage() {
               </article>
             ))}
           </div>
+          <div className="mt-16">
+            <ImageCarousel slides={LAB_PHOTOS} />
+          </div>
         </div>
       </section>
 
@@ -122,8 +143,8 @@ export default function ResearchPage() {
             <Link href="/po-film" className="apple-button apple-button-primary">
               연구소가 만든 라인업
             </Link>
-            <Link href="/about/factories" className="apple-button apple-button-secondary">
-              공장·사옥
+            <Link href="/about/production" className="apple-button apple-button-secondary">
+              생산기술력
             </Link>
           </div>
         </div>
