@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SmartImage from "@/components/media/SmartImage";
 import ProductHero from "@/components/product/ProductHero";
 import StickySubNav from "@/components/product/StickySubNav";
 import PremiumGallery, { type GallerySlide } from "@/components/product/PremiumGallery";
@@ -73,12 +74,24 @@ export default function PremiumProductPage({ product }: { product: Product }) {
   };
 
   return (
-    <article className="bg-white text-ink-invert">
-      <ProductHero product={product} />
+    <article className="flex flex-col gap-3 bg-paper-soft text-ink-invert">
+      <ProductHero product={product} textOnly />
+      <section className="bg-white">
+        <div className="relative w-full overflow-hidden bg-paper-soft min-h-[640px] md:min-h-[720px] lg:min-h-[800px]">
+          <SmartImage
+            src={product.hero.src}
+            alt={product.hero.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      </section>
       <StickySubNav items={SUB_NAV} productName={product.name.ko} variant="premium" />
 
       {product.highlights.length > 0 && (
-        <section aria-label="하이라이트 한눈에" className="border-b border-line bg-white">
+        <section aria-label="하이라이트 한눈에" className="bg-white">
           <div className="mx-auto max-w-[1440px] px-6 py-9 lg:px-10 lg:py-11">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               하이라이트 한눈에
@@ -100,10 +113,8 @@ export default function PremiumProductPage({ product }: { product: Product }) {
         </section>
       )}
 
-      <section
-        id="overview"
-        className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28"
-      >
+      <section id="overview" className="bg-white">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
         <div className="lg:col-span-3">
           <p className="font-tech text-[12px] font-semibold text-spring-blue">
             PREMIUM
@@ -135,11 +146,12 @@ export default function PremiumProductPage({ product }: { product: Product }) {
             ))}
           </dl>
         </div>
+        </div>
       </section>
 
       {product.heroVideo?.src && (
-        <section className="border-y border-line bg-paper-soft px-6 py-16 lg:px-10">
-          <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[8px] bg-white">
+        <section className="bg-white px-6 py-16 lg:px-10">
+          <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[8px] bg-paper-soft">
             <div className="relative h-[54svh] min-h-[360px]">
               <HeroVideoBg
                 src={
@@ -164,7 +176,7 @@ export default function PremiumProductPage({ product }: { product: Product }) {
 
       <section
         id="highlights"
-        className="border-y border-line bg-paper-warm px-6 py-20 lg:px-10 lg:py-28"
+        className="bg-paper-warm px-6 py-20 lg:px-10 lg:py-28"
       >
         <div className="mx-auto max-w-[1440px]">
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
@@ -196,10 +208,8 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       </section>
 
       {product.fullSpecs && product.fullSpecs.length > 0 && (
-        <section
-          id="specs"
-          className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28"
-        >
+        <section id="specs" className="bg-white">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
           <div className="lg:col-span-3">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               SPECS
@@ -230,11 +240,12 @@ export default function PremiumProductPage({ product }: { product: Product }) {
               </div>
             ))}
           </div>
+          </div>
         </section>
       )}
 
       {introSlides.length > 0 && (
-        <section className="border-y border-line bg-paper-soft px-6 py-20 lg:px-10 lg:py-28">
+        <section className="bg-paper-warm px-6 py-20 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1440px]">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               FIELD
@@ -281,7 +292,7 @@ export default function PremiumProductPage({ product }: { product: Product }) {
         </section>
       )}
 
-      <section className="border-t border-line bg-paper-soft px-6 py-20 lg:px-10">
+      <section className="bg-paper-warm px-6 py-20 lg:px-10">
         <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
