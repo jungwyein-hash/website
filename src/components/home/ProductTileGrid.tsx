@@ -101,7 +101,7 @@ export default function ProductTileGrid() {
             className="pointer-events-none absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-black/55 to-transparent"
           />
 
-          <div className="absolute inset-x-0 top-0 px-6 pt-[44px] text-center md:pt-[53px]">
+          <div className="absolute inset-x-0 top-0 px-6 pt-[44px] text-center md:pt-[52px]">
             <h3 className="text-[32px] font-semibold leading-[1.1] tracking-display text-white md:text-[40px]">
               {tile.name}
             </h3>
