@@ -121,6 +121,11 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* 일본어 전용 — Noto Sans JP가 일본어 글리프만 렌더, 한글·영문은 Pretendard로 폴백 */
+.font-jp {
+  font-family: var(--font-jp), var(--font-sans);
+}
+
 /* 경천애인 한자 전용 붓글씨체 — 敬天愛人 4자만 서브셋 */
 @font-face {
   font-family: "ZiHunKaiShu";

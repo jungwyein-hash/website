@@ -5,7 +5,7 @@ export const misanranDiastar: Product = {
   category: "po-film",
   tier: "premium",
   brand: "saemi",
-  origin: "Made in Japan · 스미토모화학",
+  origin: "Made in Japan · MKV Advance",
   name: { ko: "미산란 다이아스타", en: "Misanran Diastar" },
   tagline: {
     ko: "최적화 된 빛의 산란 각도. 작물 사이사이로 빛이 더 깊이 듭니다.",
@@ -48,7 +48,7 @@ export const misanranDiastar: Product = {
       rows: [
         ["분류", "산란필름 · 코팅 PO"],
         ["두께", "0.15 mm"],
-        ["원산지", "일본 (스미토모화학)"],
+        ["원산지", "일본 (MKV Advance)"],
         ["내구 연한", "5년"],
       ],
     },
@@ -56,6 +56,10 @@ export const misanranDiastar: Product = {
   hero: {
     src: "products/po-film/premium/misanran-diastar/hero/exterior-01.webp",
     alt: "미산란 다이아스타가 시공된 하우스",
+  },
+  heroVideo: {
+    src: "products/po-film/premium/diastar/farms/221101-농촌진흥청-맘모스하우스/video/exterior-01.mp4",
+    poster: "products/po-film/premium/misanran-diastar/hero/exterior-01.webp",
   },
   bestFarms: [
     {

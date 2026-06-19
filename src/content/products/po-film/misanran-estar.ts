@@ -5,7 +5,7 @@ export const misanranEstar: Product = {
   category: "po-film",
   tier: "premium",
   brand: "saemi",
-  origin: "Made in Japan",
+  origin: "Made in Japan · MKV Advance",
   name: { ko: "미산란 이스타", en: "Misanran Estar" },
   tagline: {
     ko: "이스타의 가벼운 두께 위에, 산란각의 정교함을 더했습니다.",
@@ -48,7 +48,7 @@ export const misanranEstar: Product = {
       rows: [
         ["분류", "산란필름 · 코팅 PO"],
         ["두께", "0.10 mm"],
-        ["원산지", "일본"],
+        ["원산지", "일본 (MKV Advance)"],
         ["내구 연한", "3년"],
       ],
     },
@@ -56,6 +56,10 @@ export const misanranEstar: Product = {
   hero: {
     src: "products/po-film/premium/misanran-estar/hero/exterior-01.webp",
     alt: "미산란 이스타가 시공된 하우스",
+  },
+  heroVideo: {
+    src: "products/po-film/premium/diastar/farms/221101-농촌진흥청-맘모스하우스/video/exterior-01.mp4",
+    poster: "products/po-film/premium/misanran-estar/hero/exterior-01.webp",
   },
   catalogPdf: "company/catalog/diastar-2025.pdf",
   partners: [],

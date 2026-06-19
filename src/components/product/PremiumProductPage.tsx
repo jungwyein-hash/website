@@ -1,6 +1,5 @@
 import Link from "next/link";
 import SmartImage from "@/components/media/SmartImage";
-import ProductHero from "@/components/product/ProductHero";
 import StickySubNav from "@/components/product/StickySubNav";
 import PremiumGallery, { type GallerySlide } from "@/components/product/PremiumGallery";
 import PremiumFarmsCarousel, { type FarmCard } from "@/components/product/PremiumFarmsCarousel";
@@ -20,6 +19,8 @@ const SUB_NAV = [
 export default function PremiumProductPage({ product }: { product: Product }) {
   const farms = product.bestFarms ?? [];
   const introText = product.intro?.ko ?? product.tagline.ko;
+  const leadShort = product.tagline.ko.split(".")[0].trim();
+  const originLabel = product.origin?.replace(/\s*·\s*/g, " / ");
 
   const introImages: MediaRef[] = (() => {
     if (product.gallery && product.gallery.length > 0) return product.gallery;
@@ -101,41 +102,73 @@ export default function PremiumProductPage({ product }: { product: Product }) {
 
   return (
     <article className="flex flex-col gap-3 bg-paper-soft text-ink-invert">
-      <ProductHero product={product} textOnly />
-      <section className="bg-white">
-        <div className="relative w-full overflow-hidden bg-paper-soft min-h-[640px] md:min-h-[720px] lg:min-h-[800px]">
-          {hasVideo ? (
-            <HeroVideoBg src={videoSrc!} poster={videoPoster} />
-          ) : (
-            <SmartImage
-              src={product.hero.src}
-              alt={product.hero.alt}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          )}
+      {/* 히어로 + 개요 전환 그룹 — 스크롤 시 개요 패널이 핀 고정된 히어로 위로 상승 */}
+      <div className="relative">
+      {/* 풀블리드 동영상 히어로 — 좌측하단 개요 · 우측하단 문의 (Apple식) */}
+      <section className="sticky top-14 z-0 w-full overflow-hidden bg-soil-brown h-[calc(100svh-3.5rem)] min-h-[560px]">
+        {hasVideo ? (
+          <HeroVideoBg src={videoSrc!} poster={videoPoster} />
+        ) : (
+          <SmartImage
+            src={product.hero.src}
+            alt={product.hero.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        )}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent"
+        />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="flex flex-col gap-6 px-[max(1.5rem,calc((100vw-1680px)/2))] pb-12 text-white lg:flex-row lg:items-end lg:justify-between lg:px-[max(2.5rem,calc((100vw-1680px)/2))] lg:pb-16">
+            <div>
+              {originLabel && (
+                <span className="font-tech inline-flex border border-white/40 bg-white/10 px-3 py-1 text-[12px] font-semibold text-white backdrop-blur">
+                  {originLabel}
+                </span>
+              )}
+              <h1
+                style={{ letterSpacing: "0.02em" }}
+                className="mt-4 max-w-[16ch] text-[40px] md:text-[64px] lg:text-[80px] font-bold leading-[1.05] text-white"
+              >
+                {product.name.ko}
+              </h1>
+              <p className="font-premium mt-3 max-w-[40ch] text-[18px] md:text-[22px] leading-snug text-white/85">
+                {`“${leadShort}”`}
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              {product.catalogPdf && (
+                <a
+                  href={`/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`}
+                  className="inline-flex min-h-[48px] min-w-[120px] items-center justify-center border border-premium-cream/50 px-6 text-[16px] font-semibold leading-none text-premium-cream transition-colors hover:bg-white/10"
+                >
+                  카탈로그
+                </a>
+              )}
+              <Link
+                href="/contact/quote"
+                className="inline-flex min-h-[48px] min-w-[120px] items-center justify-center bg-premium-cream px-6 text-[16px] font-semibold leading-none text-soil-green transition-transform duration-200 hover:-translate-y-px active:scale-[0.98]"
+              >
+                견적 문의
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
-      <StickySubNav
-        items={SUB_NAV}
-        productName={product.name.ko}
-        variant="premium"
-        className="-my-3"
-        catalogHref={
-          product.catalogPdf
-            ? `/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`
-            : undefined
-        }
-      />
-
-      <section id="overview" className="bg-white">
-        <div className="mx-auto flex max-w-[880px] flex-col items-center px-6 py-20 text-center lg:px-10 lg:py-28">
+      {/* 개요 — 글라스 패널이 히어로 위로 미끄러져 올라옴 */}
+      <section
+        id="overview"
+        className="relative z-10 flex min-h-[calc(100svh-3.5rem)] items-center bg-white/75 backdrop-blur-2xl"
+      >
+        <div className="mx-auto flex w-full max-w-[880px] flex-col items-center px-6 py-20 text-center lg:px-10 lg:py-28">
           <p className="font-tech text-[12px] font-semibold text-spring-blue">
             PREMIUM
           </p>
-          <h2 className="font-premium mt-6 whitespace-pre-line text-[32px] md:text-[44px] lg:text-[56px] font-bold leading-[1.25] text-soil-brown text-balance">
+          <h2 className="mt-6 whitespace-pre-line text-[32px] md:text-[44px] lg:text-[56px] font-bold leading-[1.25] tracking-display text-soil-brown text-balance">
             {product.headline?.ko ?? product.tagline.ko}
           </h2>
           <p className="mt-8 max-w-[60ch] text-[20px] md:text-[22px] leading-relaxed text-soil-brown-soft">
@@ -161,6 +194,18 @@ export default function PremiumProductPage({ product }: { product: Product }) {
           </dl>
         </div>
       </section>
+      </div>
+      <StickySubNav
+        items={SUB_NAV}
+        productName={product.name.ko}
+        variant="premium"
+        className="-my-3"
+        catalogHref={
+          product.catalogPdf
+            ? `/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`
+            : undefined
+        }
+      />
 
       <section
         id="highlights"
@@ -179,6 +224,20 @@ export default function PremiumProductPage({ product }: { product: Product }) {
         </div>
       </section>
 
+      {introSlides.length > 0 && (
+        <section className="bg-white py-20 lg:py-28">
+          <div className="mx-auto mb-24 max-w-[1440px] px-6 text-center lg:px-10">
+            <p className="font-tech text-[12px] font-semibold text-spring-blue">
+              © Photograph by SAEMI Group
+            </p>
+            <h2 className="mt-4 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] tracking-display text-soil-brown">
+              농가 현장 사진
+            </h2>
+          </div>
+          <PremiumGallery slides={introSlides} bleed />
+        </section>
+      )}
+
       {product.fullSpecs && product.fullSpecs.length > 0 && (
         <section id="specs" className="bg-white">
           <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
@@ -186,14 +245,14 @@ export default function PremiumProductPage({ product }: { product: Product }) {
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               SPECS
             </p>
-            <h2 className="font-premium mt-4 text-[32px] font-bold text-soil-brown">
+            <h2 className="mt-4 text-[32px] font-bold tracking-display text-soil-brown">
               제품 사양
             </h2>
           </div>
           <div className="lg:col-span-8 lg:col-start-5 space-y-12">
             {product.fullSpecs.map((g) => (
               <div key={g.group}>
-                <p className="mb-4 text-[16px] font-semibold text-ink-invert">
+                <p className="font-jp mb-4 text-[16px] font-semibold text-ink-invert">
                   {g.group}
                 </p>
                 <dl className="border-t border-line">
@@ -213,20 +272,6 @@ export default function PremiumProductPage({ product }: { product: Product }) {
             ))}
           </div>
           </div>
-        </section>
-      )}
-
-      {introSlides.length > 0 && (
-        <section className="bg-paper-warm py-20 lg:py-28">
-          <div className="mx-auto mb-24 max-w-[1440px] px-6 text-center lg:px-10">
-            <p className="font-tech text-[12px] font-semibold text-spring-blue">
-              © Photograph by SAEMI Group
-            </p>
-            <h2 className="mt-4 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] tracking-display text-soil-brown">
-              농가 현장 사진
-            </h2>
-          </div>
-          <PremiumGallery slides={introSlides} bleed />
         </section>
       )}
 

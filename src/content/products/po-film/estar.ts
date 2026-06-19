@@ -5,7 +5,7 @@ export const estar: Product = {
   category: "po-film",
   tier: "premium",
   brand: "saemi",
-  origin: "Made in Japan",
+  origin: "Made in Japan · MKV Advance",
   name: { ko: "이스타", en: "Estar" },
   tagline: {
     ko: "뛰어난 투명성과 무적성. 설치할 때도, 사용할 때도 손에 안기는 두께.",
@@ -44,7 +44,7 @@ export const estar: Product = {
       rows: [
         ["분류", "투명필름 · 코팅 PO"],
         ["두께", "0.13 mm (이스타 S) · 0.10 mm (이스타)"],
-        ["원산지", "일본"],
+        ["원산지", "일본 (MKV Advance)"],
         ["내구 연한", "5년 (S) · 3년"],
         ["맞춤", "길이 1m, 폭 10cm 단위"],
       ],
@@ -53,6 +53,10 @@ export const estar: Product = {
   hero: {
     src: "products/po-film/premium/estar/hero/exterior-01.webp",
     alt: "이스타 PO필름이 시공된 하우스",
+  },
+  heroVideo: {
+    src: "products/po-film/premium/diastar/farms/221101-농촌진흥청-맘모스하우스/video/exterior-01.mp4",
+    poster: "products/po-film/premium/estar/hero/exterior-01.webp",
   },
   bestFarms: [
     {

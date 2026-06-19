@@ -5,7 +5,7 @@ export const diastar: Product = {
   category: "po-film",
   tier: "premium",
   brand: "saemi",
-  origin: "Made in Japan · 스미토모화학",
+  origin: "Made in Japan · MKV Advance",
   name: { ko: "다이아스타", en: "Diastar" },
   tagline: {
     ko: "타협 없는 탁월함. 한 장이 한 해를 받칩니다.",
@@ -52,13 +52,13 @@ export const diastar: Product = {
   ],
   fullSpecs: [
     {
-      group: "기본",
+      group: "다이아스타 (ダイアスター)",
       rows: [
         ["분류", "투명필름 · 코팅 PO"],
         ["두께", "0.15 mm"],
-        ["원산지", "일본 (스미토모화학)"],
-        ["내구 연한", "5년"],
-        ["맞춤", "길이 1m, 폭 10cm 단위"],
+        ["제조국가", "일본 (MKV Advance)"],
+        ["경제수명", "5년"],
+        ["길이 · 폭", "길이 1m, 폭 10cm 단위 맞춤가공"],
       ],
     },
   ],
