@@ -1,4 +1,4 @@
-import { Gowun_Batang } from "next/font/google";
+import { Gowun_Batang, Noto_Sans_JP } from "next/font/google";
 
 /**
  * Pretendard Variable — 본문·UI 기본.
@@ -15,4 +15,17 @@ export const gowunBatang = Gowun_Batang({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-gowun-batang",
+});
+
+/**
+ * Noto Sans JP — 일본어(가나·한자) 전용 폴백.
+ * 전역 sans 스택에서 Pretendard 다음에 배치 → 한글·영문은 Pretendard,
+ * Pretendard에 없는 일본어 글리프만 Noto Sans JP로 렌더.
+ * CJK 대용량 폰트라 preload는 끔(요청 시 다운로드).
+ */
+export const notoSansJP = Noto_Sans_JP({
+  weight: ["400", "500", "700"],
+  preload: false,
+  display: "swap",
+  variable: "--font-jp",
 });

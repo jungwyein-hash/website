@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
-import { gowunBatang } from "@/lib/fonts";
+import { gowunBatang, notoSansJP } from "@/lib/fonts";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import ReducedMotionGuard from "@/components/site/ReducedMotionGuard";
@@ -70,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${gowunBatang.variable} h-full`}
+      className={`${gowunBatang.variable} ${notoSansJP.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink-invert">
         <Header />

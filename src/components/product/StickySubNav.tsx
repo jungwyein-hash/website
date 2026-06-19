@@ -23,23 +23,19 @@ export default function StickySubNav({
 
   return (
     <div
-      className={`sticky top-14 z-30 border-y backdrop-blur-xl ${
-        isPremium
-          ? "border-premium-cream/15 bg-soil-green/95"
-          : "border-line bg-white/95"
-      } ${className}`}
+      className={`sticky top-14 z-30 border-y border-line bg-white/95 backdrop-blur-xl ${className}`}
     >
       <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between gap-6 px-6 lg:px-10">
         <span
           className={`truncate text-[16px] font-semibold ${
-            isPremium ? "font-premium text-premium-cream" : "text-ink-invert"
+            isPremium ? "font-premium text-soil-brown" : "text-ink-invert"
           }`}
         >
           {productName}
         </span>
         <nav
           className={`hidden items-center gap-7 text-[12px] md:flex ${
-            isPremium ? "text-premium-cream/75" : "text-soil-brown-soft"
+            isPremium ? "text-soil-brown-soft" : "text-soil-brown-soft"
           }`}
         >
           {items.map((it) => (
@@ -47,7 +43,7 @@ export default function StickySubNav({
               key={it.id}
               href={`#${it.id}`}
               className={`transition-colors ${
-                isPremium ? "hover:text-premium-cream" : "hover:text-spring-blue"
+                isPremium ? "hover:text-soil-green" : "hover:text-spring-blue"
               }`}
             >
               {it.label}
@@ -60,7 +56,7 @@ export default function StickySubNav({
               href={catalogHref}
               className={
                 isPremium
-                  ? "inline-flex h-9 items-center border border-premium-cream/40 px-4 text-[12px] font-semibold text-premium-cream transition-transform duration-200 hover:-translate-y-px hover:border-premium-cream active:scale-[0.98]"
+                  ? "inline-flex h-9 items-center border border-soil-green/40 px-4 text-[12px] font-semibold text-soil-green transition-transform duration-200 hover:-translate-y-px hover:border-soil-green active:scale-[0.98]"
                   : "inline-flex h-9 items-center rounded-full border border-spring-blue/40 px-4 text-[12px] font-semibold text-spring-blue transition-colors hover:border-spring-blue"
               }
             >
@@ -71,7 +67,7 @@ export default function StickySubNav({
             href="/contact/quote"
             className={
               isPremium
-                ? "inline-flex h-9 items-center bg-premium-cream px-4 text-[12px] font-semibold text-soil-green transition-transform duration-200 hover:-translate-y-px active:scale-[0.98]"
+                ? "inline-flex h-9 items-center bg-soil-green px-4 text-[12px] font-semibold text-premium-cream transition-transform duration-200 hover:-translate-y-px active:scale-[0.98]"
                 : "inline-flex h-9 items-center rounded-full bg-spring-blue px-4 text-[12px] font-semibold text-white transition-colors hover:bg-spring-blue-deep"
             }
           >
