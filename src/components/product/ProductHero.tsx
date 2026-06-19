@@ -12,9 +12,35 @@ export default function ProductHero({
 }) {
   const isPremium = product.tier === "premium";
   const lead = product.tagline.ko;
+  // 프리미엄 히어로 오버라인 — 태그라인 첫 문장만, 제목 위 고운바탕체
+  const leadShort = lead.split(".")[0].trim();
   // origin 칩이 출처를 이미 담고 있으면 같은 뜻의 뱃지는 중복이므로 숨긴다.
   const badges = (product.badges ?? []).filter(
     (b) => !product.origin || !product.origin.includes(b),
+  );
+
+  const metaRow = (extra: string) => (
+    <div className={`flex flex-wrap items-center gap-2 ${extra}`}>
+      {badges.map((b) => (
+        <span
+          key={b}
+          className="rounded-full border border-line bg-paper-soft px-3 py-1 text-[12px] font-semibold text-soil-brown-soft"
+        >
+          {b}
+        </span>
+      ))}
+      {product.origin && (
+        <span
+          className={
+            isPremium
+              ? "font-tech border border-soil-green/40 bg-soil-green/8 px-3 py-1 text-[12px] font-semibold text-soil-green"
+              : "font-tech rounded-full border border-spring-blue/22 bg-spring-blue/8 px-3 py-1 text-[12px] font-semibold text-spring-blue"
+          }
+        >
+          {isPremium ? product.origin.replace(/\s*·\s*/g, " / ") : product.origin}
+        </span>
+      )}
+    </div>
   );
 
   return (
@@ -26,57 +52,46 @@ export default function ProductHero({
             : "grid min-h-[70svh] items-center py-16 lg:grid-cols-12 lg:py-20"
         }`}
       >
-        <div className={textOnly ? "" : "lg:col-span-5"}>
-          <div className="mb-6 flex flex-wrap items-center gap-2">
-            {badges.map((b) => (
-              <span
-                key={b}
-                className="rounded-full border border-line bg-paper-soft px-3 py-1 text-[12px] font-semibold text-soil-brown-soft"
-              >
-                {b}
-              </span>
-            ))}
-            {product.origin && (
-              <span className="font-tech rounded-full border border-spring-blue/22 bg-spring-blue/8 px-3 py-1 text-[12px] font-semibold text-spring-blue">
-                {isPremium ? product.origin.replace(/\s*·\s*/g, " / ") : product.origin}
-              </span>
-            )}
-          </div>
-          <h1
-            className={`max-w-[12ch] text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] text-ink-invert ${
-              isPremium ? "font-premium font-bold text-soil-brown" : ""
-            }`}
-          >
-            {product.name.ko}
-          </h1>
-          <p className="mt-7 max-w-[38rem] text-[22px] leading-snug text-soil-brown-soft text-balance">
-            {lead}
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            {product.catalogPdf && (
-              <a
-                href={`/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`}
-                className={
-                  isPremium
-                    ? "inline-flex min-h-[48px] min-w-[120px] items-center justify-center bg-soil-green px-6 text-[16px] font-semibold leading-none text-premium-cream transition-transform duration-200 hover:-translate-y-px active:scale-[0.98]"
-                    : "apple-button apple-button-primary"
-                }
-              >
-                카탈로그
-              </a>
-            )}
-            <Link
-              href="/contact/quote"
-              className={
-                isPremium
-                  ? "inline-flex min-h-[48px] min-w-[120px] items-center justify-center border border-soil-green/40 px-6 text-[16px] font-semibold leading-none text-soil-green transition-transform duration-200 hover:-translate-y-px hover:border-soil-green active:scale-[0.98]"
-                  : "apple-button apple-button-secondary"
-              }
+        {isPremium ? (
+          <div className="flex flex-col items-center text-center">
+            {metaRow("")}
+            <h1
+              style={{ letterSpacing: "0.02em" }}
+              className="mt-8 max-w-[12ch] text-[48px] md:text-[72px] lg:text-[96px] font-bold leading-[1.05] text-soil-brown"
             >
-              견적 문의
-            </Link>
+              {product.name.ko}
+            </h1>
+            <p className="font-premium mt-6 max-w-[24ch] text-[32px] leading-snug text-soil-brown-soft text-balance">
+              {`“${leadShort}”`}
+            </p>
           </div>
-        </div>
+        ) : (
+          <div className={textOnly ? "" : "lg:col-span-5"}>
+            {metaRow("mb-6")}
+            <h1 className="max-w-[12ch] text-[48px] md:text-[72px] lg:text-[96px] font-semibold leading-[1.05] text-ink-invert">
+              {product.name.ko}
+            </h1>
+            <p className="mt-7 max-w-[38rem] text-[22px] leading-snug text-soil-brown-soft text-balance">
+              {lead}
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              {product.catalogPdf && (
+                <a
+                  href={`/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`}
+                  className="apple-button apple-button-primary"
+                >
+                  카탈로그
+                </a>
+              )}
+              <Link
+                href="/contact/quote"
+                className="apple-button apple-button-secondary"
+              >
+                견적 문의
+              </Link>
+            </div>
+          </div>
+        )}
 
         {!textOnly && (
           <div className="lg:col-span-7">

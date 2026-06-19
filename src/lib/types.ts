@@ -34,6 +34,8 @@ export interface BigSpec {
 export interface Highlight {
   title: string;
   body: string;
+  /** 특징 탐색기 우측 대표 이미지 — R2 키. 없으면 갤러리에서 순환 폴백 */
+  image?: string;
 }
 
 export interface SpecGroup {
@@ -46,6 +48,10 @@ export interface MediaRef {
   src: string;
   alt: string;
   caption?: string;
+  /** 사진 중앙 크레딧용 — 촬영 연도 */
+  year?: string;
+  /** 사진 중앙 크레딧용 — 촬영 지역 */
+  region?: string;
 }
 
 export interface VideoRef {
@@ -85,6 +91,8 @@ export interface Product {
   name: { ko: string; en?: string; ja?: string; zh?: string };
   /** 한 줄 가치 제안 */
   tagline: { ko: string; en?: string };
+  /** 소개 섹션 대표 헤드라인 — 없으면 tagline 사용. \n 으로 줄바꿈 */
+  headline?: { ko: string };
   /** 한 단락 소개 */
   intro?: { ko: string };
 

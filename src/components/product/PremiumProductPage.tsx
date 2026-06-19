@@ -5,6 +5,7 @@ import StickySubNav from "@/components/product/StickySubNav";
 import PremiumGallery, { type GallerySlide } from "@/components/product/PremiumGallery";
 import PremiumFarmsCarousel, { type FarmCard } from "@/components/product/PremiumFarmsCarousel";
 import HeroVideoBg from "@/components/product/HeroVideoBg";
+import FeatureExplorer, { type ExplorerFeature } from "@/components/product/FeatureExplorer";
 import SelectProcess from "@/components/product/SelectProcess";
 import { r2Url } from "@/lib/r2-image";
 import type { MediaRef, Product } from "@/lib/types";
@@ -42,6 +43,8 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       url: isAbsolute ? m.src : r2Url(m.src),
       alt: m.alt,
       caption: m.caption,
+      year: m.year,
+      region: m.region,
     };
   });
 
@@ -63,6 +66,29 @@ export default function PremiumProductPage({ product }: { product: Product }) {
     };
   });
 
+  const resolve = (s: string) =>
+    s.startsWith("http") || s.startsWith("/") ? s : r2Url(s);
+  const hasVideo = !!product.heroVideo?.src;
+  const videoSrc = product.heroVideo?.src ? resolve(product.heroVideo.src) : null;
+  const videoPoster = product.heroVideo?.poster
+    ? resolve(product.heroVideo.poster)
+    : undefined;
+
+  // 특징 탐색기 — 각 하이라이트에 대표 이미지를 부여(미지정 시 갤러리/히어로에서 순환).
+  const featureImagePool = [
+    ...(product.gallery ?? []),
+    product.hero,
+  ];
+  const explorerFeatures: ExplorerFeature[] = product.highlights.map((h, i) => {
+    const fallback = featureImagePool[i % featureImagePool.length] ?? product.hero;
+    return {
+      title: h.title,
+      body: h.body,
+      image: resolve(h.image ?? fallback.src),
+      alt: h.image ? h.title : fallback.alt,
+    };
+  });
+
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -78,57 +104,45 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       <ProductHero product={product} textOnly />
       <section className="bg-white">
         <div className="relative w-full overflow-hidden bg-paper-soft min-h-[640px] md:min-h-[720px] lg:min-h-[800px]">
-          <SmartImage
-            src={product.hero.src}
-            alt={product.hero.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          {hasVideo ? (
+            <HeroVideoBg src={videoSrc!} poster={videoPoster} />
+          ) : (
+            <SmartImage
+              src={product.hero.src}
+              alt={product.hero.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          )}
         </div>
       </section>
-      <StickySubNav items={SUB_NAV} productName={product.name.ko} variant="premium" />
-
-      {product.highlights.length > 0 && (
-        <section aria-label="하이라이트 한눈에" className="bg-white">
-          <div className="mx-auto max-w-[1440px] px-6 py-9 lg:px-10 lg:py-11">
-            <p className="font-tech text-[12px] font-semibold text-spring-blue">
-              하이라이트 한눈에
-            </p>
-            <ul className="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-              {product.highlights.slice(0, 6).map((h) => (
-                <li
-                  key={h.title}
-                  className="flex items-baseline gap-3 text-[18px] md:text-[20px] leading-snug text-soil-brown"
-                >
-                  <span aria-hidden className="text-spring-blue">
-                    —
-                  </span>
-                  <span className="font-semibold">{h.title}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
+      <StickySubNav
+        items={SUB_NAV}
+        productName={product.name.ko}
+        variant="premium"
+        className="-my-3"
+        catalogHref={
+          product.catalogPdf
+            ? `/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`
+            : undefined
+        }
+      />
 
       <section id="overview" className="bg-white">
-        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
-        <div className="lg:col-span-3">
+        <div className="mx-auto flex max-w-[880px] flex-col items-center px-6 py-20 text-center lg:px-10 lg:py-28">
           <p className="font-tech text-[12px] font-semibold text-spring-blue">
             PREMIUM
           </p>
-        </div>
-        <div className="lg:col-span-8 lg:col-start-5">
-          <h2 className="font-premium text-[32px] md:text-[44px] lg:text-[56px] font-bold leading-[1.14] text-soil-brown text-balance">
-            {product.tagline.ko}
+          <h2 className="font-premium mt-6 whitespace-pre-line text-[32px] md:text-[44px] lg:text-[56px] font-bold leading-[1.25] text-soil-brown text-balance">
+            {product.headline?.ko ?? product.tagline.ko}
           </h2>
           <p className="mt-8 max-w-[60ch] text-[20px] md:text-[22px] leading-relaxed text-soil-brown-soft">
             {introText}
           </p>
 
-          <dl className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[8px] border border-line bg-line md:grid-cols-3">
+          <dl className="mt-10 grid w-full grid-cols-1 gap-px overflow-hidden rounded-[8px] border border-line bg-line md:grid-cols-3">
             {product.bigSpecs.slice(0, 3).map((s) => (
               <div key={s.label} className="bg-white p-5">
                 <dt className="text-[12px] font-semibold text-soil-brown-mute">
@@ -146,64 +160,22 @@ export default function PremiumProductPage({ product }: { product: Product }) {
             ))}
           </dl>
         </div>
-        </div>
       </section>
-
-      {product.heroVideo?.src && (
-        <section className="bg-white px-6 py-16 lg:px-10">
-          <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[8px] bg-paper-soft">
-            <div className="relative h-[54svh] min-h-[360px]">
-              <HeroVideoBg
-                src={
-                  product.heroVideo.src.startsWith("http") ||
-                  product.heroVideo.src.startsWith("/")
-                    ? product.heroVideo.src
-                    : r2Url(product.heroVideo.src)
-                }
-                poster={
-                  product.heroVideo.poster
-                    ? product.heroVideo.poster.startsWith("http") ||
-                      product.heroVideo.poster.startsWith("/")
-                      ? product.heroVideo.poster
-                      : r2Url(product.heroVideo.poster)
-                    : undefined
-                }
-              />
-            </div>
-          </div>
-        </section>
-      )}
 
       <section
         id="highlights"
         className="bg-paper-warm px-6 py-20 lg:px-10 lg:py-28"
       >
         <div className="mx-auto max-w-[1440px]">
-          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-3">
-              <p className="font-tech text-[12px] font-semibold text-spring-blue">
-                POINTS
-              </p>
-            </div>
-            <h2 className="font-premium lg:col-span-8 lg:col-start-5 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] text-soil-brown">
-              선택 전에 확인할 특징
+          <div className="mb-24 text-center">
+            <p className="font-tech text-[12px] font-semibold text-spring-blue">
+              Highlights
+            </p>
+            <h2 className="mt-4 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] tracking-display text-soil-brown">
+              제품 특징
             </h2>
           </div>
-          <ol className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {product.highlights.map((h, i) => (
-              <li key={h.title} className="surface-panel bg-white p-6">
-                <span className="font-tech text-[12px] font-semibold text-spring-blue">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 text-[24px] font-semibold leading-tight text-ink-invert">
-                  {h.title}
-                </h3>
-                <p className="mt-3 max-w-[44ch] text-[16px] leading-relaxed text-soil-brown-soft">
-                  {h.body}
-                </p>
-              </li>
-            ))}
-          </ol>
+          <FeatureExplorer features={explorerFeatures} />
         </div>
       </section>
 
@@ -245,16 +217,16 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       )}
 
       {introSlides.length > 0 && (
-        <section className="bg-paper-warm px-6 py-20 lg:px-10 lg:py-28">
-          <div className="mx-auto max-w-[1440px]">
+        <section className="bg-paper-warm py-20 lg:py-28">
+          <div className="mx-auto mb-24 max-w-[1440px] px-6 text-center lg:px-10">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
-              FIELD
+              © Photograph by SAEMI Group
             </p>
-            <h2 className="font-premium mt-4 mb-10 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] text-soil-brown">
-              현장에서 본 제품
+            <h2 className="mt-4 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] tracking-display text-soil-brown">
+              농가 현장 사진
             </h2>
-            <PremiumGallery slides={introSlides} />
           </div>
+          <PremiumGallery slides={introSlides} bleed />
         </section>
       )}
 

@@ -10,6 +10,9 @@ export const diastar: Product = {
   tagline: {
     ko: "타협 없는 탁월함. 한 장이 한 해를 받칩니다.",
   },
+  headline: {
+    ko: "타협 없는 탁월함\n일본 코팅 PO 필름 No.1",
+  },
   intro: {
     ko: "다섯 해, 한 장 — 농가의 한 시즌이 그 위에서 흐릅니다. 빛이 통과하는 방식, 야간 온도가 머무는 방식, 빗방울이 흐르는 방식. 일본 MKV Advance가 오래 다듬어 온 코팅 PO 기술이, 새미를 통해 한국 농업으로 들어옵니다.",
   },
@@ -17,21 +20,34 @@ export const diastar: Product = {
   thickness: [0.15],
   bigSpecs: [
     { label: "두께", value: "0.15", unit: "mm" },
-    { label: "내구", value: "5", unit: "년" },
+    { label: "경제수명", value: "5", unit: "년" },
     { label: "원산지", value: "Japan" },
   ],
   highlights: [
     {
-      title: "장기 방진성",
-      body: "코팅의 무적 성능이 시간이 흘러도 흐려지지 않도록 설계되었습니다. 한 시즌의 마지막에도, 처음의 빛이 그대로 들어옵니다.",
+      title: "탁월한 내구성과 무적성",
+      body: "내구성과 무적성이 탁월한 고품질 장기성 PO필름으로, 필요한 모든 성능을 효과적으로 장기간에 걸쳐 발휘합니다.",
+      image: "products/po-film/premium/diastar/hero/exterior-02.webp",
     },
     {
-      title: "두께 균일도",
-      body: "한 롤의 처음과 끝, 가운데와 가장자리가 같은 두께로 흐릅니다. 시공의 균질함과 보온의 일관성을 함께 만듭니다.",
+      title: "유연하면서 강한 필름",
+      body: "플라스토머 소재로 유연하면서 동시에 강한 2대 성능을 실현했습니다. 접고 펼치는 시공에도 잘 견디며 장기성 강도를 오래 유지합니다.",
+      image: "products/po-film/premium/diastar/hero/exterior-03.webp",
     },
     {
-      title: "장기 강도",
-      body: "5년의 시간을 견디도록, 인장과 충격 모두에 안정적인 강도로 마감했습니다. 자주 갈아 끼우는 부담이 줄어듭니다.",
+      title: "독자 도포기술 무적성능",
+      body: "독자적인 도포기술로 무적(無滴) 성능을 장기적으로 지속시켜 하우스 내 물방울 맺힘을 억제합니다.",
+      image: "products/po-film/premium/diastar/hero/interior-02.webp",
+    },
+    {
+      title: "두께 0.15mm·5년 수명",
+      body: "두께 0.15mm 일본산 PO필름으로 경제수명 5년을 제공하며, 폭 10cm·길이 1m 단위 맞춤가공이 가능합니다.",
+      image: "products/po-film/premium/diastar/hero/exterior-04.webp",
+    },
+    {
+      title: "최상의 광환경",
+      body: "축적된 기술과 노하우로 높은 투명도를 구현해 재배 작물과 하우스에 최상의 광환경을 제공합니다.",
+      image: "products/po-film/premium/diastar/hero/interior-01.webp",
     },
   ],
   fullSpecs: [
@@ -55,16 +71,16 @@ export const diastar: Product = {
     poster: "products/po-film/premium/diastar/hero/exterior-01.webp",
   },
   gallery: [
-    { src: "products/po-film/premium/diastar/hero/exterior-01.webp", alt: "다이아스타 시공 외관 1" },
-    { src: "products/po-film/premium/diastar/hero/interior-01.webp", alt: "다이아스타 하우스 내부 1" },
-    { src: "products/po-film/premium/diastar/hero/exterior-02.webp", alt: "다이아스타 시공 외관 2" },
-    { src: "products/po-film/premium/diastar/hero/interior-02.webp", alt: "다이아스타 하우스 내부 2" },
-    { src: "products/po-film/premium/diastar/hero/exterior-03.webp", alt: "다이아스타 시공 외관 3" },
-    { src: "products/po-film/premium/diastar/hero/interior-03.webp", alt: "다이아스타 하우스 내부 3" },
-    { src: "products/po-film/premium/diastar/hero/exterior-04.webp", alt: "다이아스타 시공 외관 4" },
-    { src: "products/po-film/premium/diastar/hero/interior-04.webp", alt: "다이아스타 하우스 내부 4" },
-    { src: "products/po-film/premium/diastar/hero/exterior-05.webp", alt: "다이아스타 시공 외관 5" },
-    { src: "products/po-film/premium/diastar/hero/interior-05.webp", alt: "다이아스타 하우스 내부 5" },
+    { src: "products/po-film/premium/diastar/hero/exterior-01.webp", alt: "다이아스타 시공 외관 1", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/interior-01.webp", alt: "다이아스타 하우스 내부 1", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/exterior-02.webp", alt: "다이아스타 시공 외관 2", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/interior-02.webp", alt: "다이아스타 하우스 내부 2", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/exterior-03.webp", alt: "다이아스타 시공 외관 3", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/interior-03.webp", alt: "다이아스타 하우스 내부 3", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/exterior-04.webp", alt: "다이아스타 시공 외관 4", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/interior-04.webp", alt: "다이아스타 하우스 내부 4", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/exterior-05.webp", alt: "다이아스타 시공 외관 5", year: "2022", region: "전주" },
+    { src: "products/po-film/premium/diastar/hero/interior-05.webp", alt: "다이아스타 하우스 내부 5", year: "2022", region: "전주" },
   ],
   bestFarms: [
     {

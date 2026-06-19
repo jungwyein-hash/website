@@ -105,6 +105,8 @@ body {
 .premium-surface :is(h1, h2, h3, .display, .lede),
 [data-mode="premium"] :is(h1, h2, h3, .display, .lede) {
   font-family: var(--font-serif);
+  /* 고운바탕은 살짝 트인 자간이 더 차분하게 읽힘 — gowunspacingmarker */
+  letter-spacing: 0.02em;
 }
 
 /* 스펙 텍스트용 — 숫자(0-9, 쉼표·소수점)만 Consolas, 한글·영문은 Pretendard로 폴백 */
