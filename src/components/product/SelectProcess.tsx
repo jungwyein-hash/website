@@ -15,8 +15,8 @@ const steps = [
 
 export default function SelectProcess() {
   return (
-    <section className="border-t border-line bg-white">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
+    <section className="border-t border-line bg-white px-6 py-20 lg:px-10 lg:py-28">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="font-tech text-[12px] font-semibold text-spring-blue">
             SIMPLE PROCESS

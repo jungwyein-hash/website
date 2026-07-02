@@ -77,6 +77,8 @@ export interface BestFarm {
     dy?: number;
   };
   hero: MediaRef;
+  /** 사례 상세의 농가 사진 슬라이드 — 없으면 hero 한 장 */
+  gallery?: MediaRef[];
 }
 
 export interface Product {

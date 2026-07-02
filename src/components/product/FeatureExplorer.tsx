@@ -37,7 +37,7 @@ export default function FeatureExplorer({
   return (
     <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
       {/* 우측 이미지 — 모바일은 비율, 데스크톱은 좌측 목록 높이에 맞춤 */}
-      <div className="relative order-1 aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-line lg:order-2 lg:aspect-auto lg:h-full">
+      <div className="relative order-1 aspect-[4/5] w-full overflow-hidden bg-line lg:order-2 lg:aspect-auto lg:h-full">
         {features.map((f, i) => (
           <Image
             key={f.image + i}
@@ -89,7 +89,7 @@ export default function FeatureExplorer({
                   type="button"
                   onClick={() => setActive(i)}
                   aria-expanded={isActive}
-                  className={`w-full rounded-[16px] px-5 py-4 text-left transition-colors duration-200 ${
+                  className={`w-full px-5 py-4 text-left transition-colors duration-200 ${
                     isActive
                       ? "bg-white shadow-subtle"
                       : "bg-black/[0.04] hover:bg-black/[0.07]"
