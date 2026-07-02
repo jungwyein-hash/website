@@ -2,7 +2,7 @@ import Link from "next/link";
 import SmartImage from "@/components/media/SmartImage";
 import StickySubNav from "@/components/product/StickySubNav";
 import PremiumGallery, { type GallerySlide } from "@/components/product/PremiumGallery";
-import PremiumFarmsCarousel, { type FarmCard } from "@/components/product/PremiumFarmsCarousel";
+import PremiumFarmsList, { type FarmEntry } from "@/components/product/PremiumFarmsList";
 import HeroVideoBg from "@/components/product/HeroVideoBg";
 import FeatureExplorer, { type ExplorerFeature } from "@/components/product/FeatureExplorer";
 import SelectProcess from "@/components/product/SelectProcess";
@@ -49,23 +49,6 @@ export default function PremiumProductPage({ product }: { product: Product }) {
     };
   });
 
-  const farmCards: FarmCard[] = farms.map((f) => {
-    const isAbs = f.hero.src.startsWith("http") || f.hero.src.startsWith("/");
-    return {
-      slug: f.slug,
-      farmer: f.farmer,
-      region: f.region,
-      crop: f.crop,
-      product: product.name.ko,
-      note: f.note,
-      round: f.round,
-      imageTransform: f.imageTransform,
-      hero: {
-        url: isAbs ? f.hero.src : r2Url(f.hero.src),
-        alt: f.hero.alt,
-      },
-    };
-  });
 
   const resolve = (s: string) =>
     s.startsWith("http") || s.startsWith("/") ? s : r2Url(s);
@@ -74,6 +57,25 @@ export default function PremiumProductPage({ product }: { product: Product }) {
   const videoPoster = product.heroVideo?.poster
     ? resolve(product.heroVideo.poster)
     : undefined;
+
+  // 우수농가 상세 리스트 — 포트레이트는 hero, 사진 스트립은 gallery(포트레이트 중복 제외)
+  const farmEntries: FarmEntry[] = farms.map((f) => {
+    const portrait = { url: resolve(f.hero.src), alt: f.hero.alt };
+    const photos = (f.gallery ?? [])
+      .map((m) => ({ url: resolve(m.src), alt: m.alt }))
+      .filter((p) => p.url !== portrait.url);
+    return {
+      slug: f.slug,
+      farmer: f.farmer,
+      crop: f.crop,
+      region: f.region,
+      product: product.name.ko,
+      round: f.round,
+      note: f.note,
+      portrait,
+      photos,
+    };
+  });
 
   // 특징 탐색기 — 각 하이라이트에 대표 이미지를 부여(미지정 시 갤러리/히어로에서 순환).
   const featureImagePool = [
@@ -175,7 +177,7 @@ export default function PremiumProductPage({ product }: { product: Product }) {
             {introText}
           </p>
 
-          <dl className="mt-10 grid w-full grid-cols-1 gap-px overflow-hidden rounded-[8px] border border-line bg-line md:grid-cols-3">
+          <dl className="mt-10 grid w-full grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
             {product.bigSpecs.slice(0, 3).map((s) => (
               <div key={s.label} className="bg-white p-5">
                 <dt className="text-[12px] font-semibold text-soil-brown-mute">
@@ -239,8 +241,8 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       )}
 
       {product.fullSpecs && product.fullSpecs.length > 0 && (
-        <section id="specs" className="bg-white">
-          <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
+        <section id="specs" className="bg-white px-6 py-20 lg:px-10 lg:py-28">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <p className="font-tech text-[12px] font-semibold text-spring-blue">
               SPECS
@@ -278,29 +280,25 @@ export default function PremiumProductPage({ product }: { product: Product }) {
       {farms.length > 0 && (
         <section id="farms" className="bg-white px-6 py-20 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
-              <div className="lg:col-span-3">
-                <p className="font-tech text-[12px] font-semibold text-spring-blue">
-                  BEST FARMS
-                </p>
-              </div>
-              <div className="lg:col-span-8 lg:col-start-5">
-                <h2 className="font-premium text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] text-soil-brown">
-                  우수농가 사용 사례
-                </h2>
-                <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-soil-brown-soft">
-                  제품을 실제로 사용하는 농가의 작물, 지역, 한줄 평을 확인할 수
-                  있습니다.
-                </p>
-              </div>
+            <div className="mb-12 text-center">
+              <p className="font-tech text-[12px] font-semibold text-spring-blue">
+                BEST FARMS
+              </p>
+              <h2 className="mt-4 text-[32px] md:text-[48px] lg:text-[64px] font-bold leading-[1.14] tracking-display text-soil-brown">
+                우수농가 사용 사례
+              </h2>
+              <p className="mx-auto mt-5 max-w-[58ch] text-[16px] leading-relaxed text-soil-brown-soft">
+                제품을 실제로 사용하는 농가의 작물, 지역, 한줄 평을 확인할 수
+                있습니다.
+              </p>
             </div>
 
-            <PremiumFarmsCarousel farms={farmCards} />
+            <PremiumFarmsList farms={farmEntries} />
 
             <div className="mt-12">
               <Link
                 href="/best-farms"
-                className="apple-button apple-button-secondary"
+                className="apple-button apple-button-secondary !rounded-none"
               >
                 우수농가 더 보기
               </Link>
@@ -323,15 +321,15 @@ export default function PremiumProductPage({ product }: { product: Product }) {
             {product.catalogPdf && (
               <a
                 href={`/api/r2/asset?key=${encodeURIComponent(product.catalogPdf)}`}
-                className="apple-button apple-button-secondary"
+                className="apple-button apple-button-secondary !rounded-none"
               >
                 카탈로그
               </a>
             )}
-            <Link href="/contact/quote" className="apple-button apple-button-primary">
+            <Link href="/contact/quote" className="apple-button apple-button-primary !rounded-none">
               견적 문의
             </Link>
-            <Link href="/po-film#premium" className="apple-button apple-button-secondary">
+            <Link href="/po-film#premium" className="apple-button apple-button-secondary !rounded-none">
               다른 프리미엄 보기
             </Link>
           </div>

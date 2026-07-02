@@ -83,7 +83,7 @@ export default function PremiumGallery({
         ref={scrollerRef}
         className={`flex gap-4 overflow-x-auto no-scrollbar lg:gap-6 ${
           bleed
-            ? "pl-[max(1.5rem,calc((100vw-1440px)/2))] lg:pl-[max(2.5rem,calc((100vw-1440px)/2))]"
+            ? "pl-[max(1.5rem,calc((100%-1440px)/2))] lg:pl-[max(2.5rem,calc((100%-1440px)/2))]"
             : ""
         }`}
         aria-roledescription={single ? undefined : "carousel"}
@@ -95,7 +95,7 @@ export default function PremiumGallery({
             aria-roledescription={single ? undefined : "slide"}
             aria-label={single ? undefined : `${i + 1} / ${total}`}
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[16px] bg-paper-soft lg:aspect-[16/9]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-paper-soft lg:aspect-[16/9]">
               {s.url ? (
                 <Image
                   src={s.url}
@@ -139,7 +139,7 @@ export default function PremiumGallery({
         <div
           className={`mt-5 flex items-center justify-between ${
             bleed
-              ? "px-[max(1.5rem,calc((100vw-1440px)/2))] lg:px-[max(2.5rem,calc((100vw-1440px)/2))]"
+              ? "px-[max(1.5rem,calc((100%-1440px)/2))] lg:px-[max(2.5rem,calc((100%-1440px)/2))]"
               : ""
           }`}
         >

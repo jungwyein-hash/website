@@ -23,9 +23,9 @@ export default function StickySubNav({
 
   return (
     <div
-      className={`sticky top-14 z-30 border-y border-line bg-white/95 backdrop-blur-xl ${className}`}
+      className={`sticky top-14 z-30 border-y border-line bg-white/95 px-6 backdrop-blur-xl lg:px-10 ${className}`}
     >
-      <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between gap-6 px-6 lg:px-10">
+      <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between gap-6">
         <span
           className={`truncate text-[16px] font-semibold ${
             isPremium ? "font-premium text-soil-brown" : "text-ink-invert"
